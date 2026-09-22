@@ -33,7 +33,6 @@
       line-height: 1.6;
     }
 
-    /* Canvas background for green dynamic geometry */
     #bg-canvas {
       position: fixed;
       top: 0;
@@ -44,7 +43,6 @@
       pointer-events: none;
     }
 
-    /* Navigation */
     nav {
       position: fixed;
       top: 0;
@@ -81,18 +79,19 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
       color: #FFF;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       transition: all 0.2s ease;
-      position: relative;
+      cursor: pointer;
     }
 
     .nav-links a:hover {
@@ -100,16 +99,14 @@
       text-shadow: 0 0 8px var(--neon-green-glow);
     }
 
-    /* Layout Sections */
     section {
       padding: 6rem 8% 4rem;
       max-width: 1300px;
       margin: 0 auto;
     }
 
-    /* Hero Section */
     .hero {
-      min-height: 90vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -132,7 +129,7 @@
 
     .hero h1 {
       font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      font-size: clamp(2.2rem, 5.5vw, 4.5rem);
       line-height: 1.1;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
@@ -141,12 +138,11 @@
 
     .hero h1 span {
       color: var(--neon-green);
-      -webkit-text-stroke: 1px var(--neon-green);
     }
 
     .hero p {
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      max-width: 700px;
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      max-width: 750px;
       color: #DDD;
       margin-bottom: 2.5rem;
     }
@@ -200,18 +196,16 @@
       transform: translateY(-2px);
     }
 
-    /* Section Titles */
     .section-title {
       font-family: var(--font-heading);
-      font-size: 2.2rem;
+      font-size: 2rem;
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       border-left: 4px solid var(--neon-green);
       padding-left: 1rem;
     }
 
-    /* Pillar Cards */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -223,7 +217,6 @@
       border: 1px solid var(--outline-white);
       padding: 2rem;
       transition: all 0.3s ease;
-      position: relative;
     }
 
     .card:hover {
@@ -233,25 +226,26 @@
     }
 
     .card-icon {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: var(--neon-green);
       font-family: var(--font-heading);
       margin-bottom: 1rem;
+      font-weight: bold;
     }
 
     .card h3 {
       font-family: var(--font-heading);
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-bottom: 0.8rem;
       text-transform: uppercase;
     }
 
     .card p {
       color: #BBB;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
     }
 
-    /* Events Section */
     .events-filter {
       display: flex;
       gap: 10px;
@@ -291,7 +285,7 @@
     }
 
     .event-img-wrapper {
-      height: 200px;
+      height: 180px;
       width: 100%;
       position: relative;
       background: #111;
@@ -341,22 +335,21 @@
 
     .event-title {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       margin-bottom: 0.8rem;
       text-transform: uppercase;
     }
 
     .event-desc {
       color: #AAA;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       margin-bottom: 1.5rem;
       flex-grow: 1;
     }
 
-    /* Executive Board Section */
     .grid-board {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
     }
 
@@ -374,8 +367,8 @@
     }
 
     .board-img-container {
-      width: 130px;
-      height: 130px;
+      width: 120px;
+      height: 120px;
       margin: 0 auto 1.2rem;
       border-radius: 50%;
       border: 2px solid var(--neon-green);
@@ -384,7 +377,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
     }
 
     .board-img {
@@ -393,34 +385,35 @@
       object-fit: cover;
     }
 
-    .board-card h4 {
+    .board-name {
       font-family: var(--font-heading);
       font-size: 1.1rem;
       text-transform: uppercase;
+      color: #FFF;
       margin-bottom: 0.2rem;
     }
 
     .board-role {
       color: var(--neon-green);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-family: var(--font-heading);
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 0.8rem;
     }
 
-    .board-desc {
-      font-size: 0.82rem;
-      color: #888;
-      line-height: 1.4;
+    .board-filename {
+      font-family: monospace;
+      font-size: 0.72rem;
+      color: #666;
+      word-break: break-all;
     }
 
-    /* Interactive Scenario Sandbox */
     .interactive-box {
       border: 1px solid var(--outline-white);
       background: var(--card-bg);
       padding: 2.5rem;
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
 
     .interactive-options {
@@ -455,7 +448,6 @@
       font-size: 0.95rem;
     }
 
-    /* Constitution Modal */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -480,7 +472,7 @@
 
     .modal-container {
       width: 90%;
-      max-width: 850px;
+      max-width: 800px;
       max-height: 85vh;
       background: #000;
       border: 1px solid var(--outline-white);
@@ -534,7 +526,34 @@
       margin-bottom: 1rem;
     }
 
-    /* Footer */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      color: var(--neon-green);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      background: #111;
+      border: 1px solid var(--outline-white);
+      color: #FFF;
+      font-family: var(--font-body);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--neon-green);
+      box-shadow: 0 0 8px var(--neon-green-glow);
+    }
+
     footer {
       border-top: 1px solid var(--outline-dim);
       padding: 3rem 8%;
@@ -544,7 +563,6 @@
       background: #000;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       section { padding: 4rem 5% 2rem; }
@@ -553,229 +571,237 @@
 </head>
 <body>
 
-  <!-- Dynamic Animated Neon Green Background Canvas -->
   <canvas id="bg-canvas"></canvas>
 
-  <!-- Navigation -->
   <nav>
     <div class="nav-brand">
       <img src="BSCC.image" alt="BSCC" class="brand-logo-img" onerror="this.style.display='none'">
       <span>BSCC</span>
     </div>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
+      <li><a href="#about">Purpose</a></li>
       <li><a href="#events">Events</a></li>
       <li><a href="#board">E-Board</a></li>
       <li><a href="#interactive">Practice</a></li>
-      <li><a href="#" id="open-constitution">Constitution</a></li>
+      <li><a id="open-config-nav">Config Names</a></li>
+      <li><a id="open-constitution">Constitution</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <div class="badge">Rutgers University Student Organization</div>
+    <div class="badge">Rutgers University Organization</div>
     <h1>Business Strategy & <br><span>Communications Club</span></h1>
-    <p>Master the psychology of decision-making, decode body language, and hone high-impact negotiation and soft skills that distinguish elite business leaders.</p>
+    <p>Exposing students to business communication, decision-making, and psychology to hone natural soft skills, analyze body language, and showcase real merits.</p>
     <div class="btn-group">
-      <a href="#events" class="btn-solid">Upcoming Events</a>
+      <a href="#events" class="btn-solid">Explore Events</a>
       <button class="btn-outline" id="btn-view-const">Read Constitution</button>
     </div>
   </section>
 
-  <!-- About / Core Pillars Section -->
+  <!-- Purpose & Core Pillars directly mapped to Article II -->
   <section id="about">
-    <h2 class="section-title">Core Objectives</h2>
+    <h2 class="section-title">Article II: Purpose & Values</h2>
     <div class="grid-3">
       <div class="card">
         <div class="card-icon">[01]</div>
-        <h3>Body Language & Psychology</h3>
-        <p>Analyze non-verbal cues, micro-expressions, and behavior during high-stakes interviews, deals, and strategic discussions.</p>
+        <h3>Exposure & Psychology</h3>
+        <p>Expose students to business communication, decision-making, and psychology. Many students do not have communication skills that come naturally to others; BSCC provides structured training.</p>
       </div>
       <div class="card">
         <div class="card-icon">[02]</div>
-        <h3>Simulated Negotiations</h3>
-        <p>Test your intuition at mock watercooler chats, fast-paced elevator pitches, and dynamic high-pressure business deal stations.</p>
+        <h3>Body Language & Speech</h3>
+        <p>Train and hone skills to read and analyze body language, refine speech patterns, discuss business communication, and build strategies to leave impactful impressions showcase merits.</p>
       </div>
       <div class="card">
         <div class="card-icon">[03]</div>
-        <h3>Strategic Competitions</h3>
-        <p>Compete in "What Would YOU Do?" decision-making game shows designed to test prompt agility, tactics, and communication speed.</p>
+        <h3>Bi-Monthly Programming</h3>
+        <p>Maintain consistent event execution holding interactive events at least twice a month to practice soft skills in real time before stepping into professional environments.</p>
       </div>
     </div>
   </section>
 
-  <!-- Events Section -->
+  <!-- Events Section mapped to Article II Section I -->
   <section id="events">
-    <h2 class="section-title">Club Schedule & Events</h2>
-    <p style="margin-bottom: 1.5rem; color: #AAA;">BSCC hosts bi-weekly workshops, guest speaker lectures, and strategic simulation nights.</p>
+    <h2 class="section-title">Events & Programming</h2>
+    <p style="margin-bottom: 1.5rem; color: #AAA;">In accordance with Article II Section I, BSCC holds official events at least twice a month.</p>
 
     <div class="events-filter">
-      <button class="filter-btn active" data-filter="all">All Events</button>
-      <button class="filter-btn" data-filter="upcoming">Upcoming</button>
-      <button class="filter-btn" data-filter="flagship">Flagship</button>
+      <button class="filter-btn active" data-filter="all">All Programming</button>
+      <button class="filter-btn" data-filter="lecture">Lectures</button>
+      <button class="filter-btn" data-filter="workshop">Workshops</button>
+      <button class="filter-btn" data-filter="competition">Competitions</button>
     </div>
 
     <div class="grid-3">
-      <!-- Event 1 -->
-      <div class="event-card" data-category="upcoming flagship">
+      <!-- Event 1: Lecture -->
+      <div class="event-card" data-category="lecture">
         <div class="event-img-wrapper">
           <img src="Event_BodyLanguage.image" alt="Lecture Event" class="event-img" onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80'">
-          <span class="event-tag">Lecture & QA</span>
+          <span class="event-tag">Lecture + Q&A</span>
         </div>
         <div class="event-body">
-          <div class="event-date">BI-WEEKLY SERIES</div>
-          <h3 class="event-title">Analyzing Body Language</h3>
-          <p class="event-desc">Featuring psychology and management faculty to teach decoding movements, physical gestures, and micro-reactions in interviews and deal-making.</p>
-          <button class="btn-outline rsvp-btn">RSVP / Details</button>
+          <div class="event-date">ARTICLE II • SECTION I</div>
+          <h3 class="event-title">Lecture: Analyzing Body Language</h3>
+          <p class="event-desc">Featuring psychology and humanities/management faculty discussing non-verbal gestures in interviews, deals, and daily discussions, followed by an interactive Q&A.</p>
+          <button class="btn-outline rsvp-btn" onclick="openRsvp('Lecture: Analyzing Body Language')">RSVP / Details</button>
         </div>
       </div>
 
-      <!-- Event 2 -->
-      <div class="event-card" data-category="upcoming">
+      <!-- Event 2: Communication Nights -->
+      <div class="event-card" data-category="workshop">
         <div class="event-img-wrapper">
           <img src="Event_CommunicationNight.image" alt="Communication Night" class="event-img" onerror="this.src='https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80'">
-          <span class="event-tag">Interactive Workshop</span>
+          <span class="event-tag">Practice Stations</span>
         </div>
         <div class="event-body">
-          <div class="event-date">INTERACTIVE STATION</div>
+          <div class="event-date">ARTICLE II • SECTION I</div>
           <h3 class="event-title">Communication Night</h3>
-          <p class="event-desc">Hands-on station rotations: Mock Interviews, Watercooler Conversations, and Business Deals. Get live constructive feedback on soft skills.</p>
-          <button class="btn-outline rsvp-btn">RSVP / Details</button>
+          <p class="event-desc">Dedicated stations featuring mock interviews, watercooler conversations, and business deal negotiations for active skill assessment and live peer feedback.</p>
+          <button class="btn-outline rsvp-btn" onclick="openRsvp('Communication Night')">RSVP / Details</button>
         </div>
       </div>
 
-      <!-- Event 3 -->
-      <div class="event-card" data-category="flagship">
+      <!-- Event 3: Game Show Night -->
+      <div class="event-card" data-category="competition">
         <div class="event-img-wrapper">
           <img src="Event_GameShow.image" alt="Game Show Night" class="event-img" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80'">
           <span class="event-tag">Game Show</span>
         </div>
         <div class="event-body">
-          <div class="event-date">COMPETITION</div>
-          <h3 class="event-title">"What Would YOU Do?"</h3>
-          <p class="event-desc">Family Feud / Jeopardy style game night. Teams of two tackle live scenario prompts under tight time limits to win prizes.</p>
-          <button class="btn-outline rsvp-btn">RSVP / Details</button>
+          <div class="event-date">ARTICLE II • SECTION I</div>
+          <h3 class="event-title">“What Would YOU Do?” Game Show Night</h3>
+          <p class="event-desc">Family Feud/Jeopardy style prompt competition in teams of two. Fast and effective scenario responses earn points and physical prizes.</p>
+          <button class="btn-outline rsvp-btn" onclick="openRsvp('“What Would YOU Do?” Game Show Night')">RSVP / Details</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Executive Board Section -->
+  <!-- Executive Board Section with Dynamic Names -->
   <section id="board">
-    <h2 class="section-title">Executive Board</h2>
-    <p style="margin-bottom: 2rem; color: #888;">Elections occur annually by Spring Break. Active voting rights require attendance at 3+ BSCC events.</p>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h2 class="section-title" style="margin-bottom: 0.5rem;">Executive Board</h2>
+        <p style="color: #888;">Images load automatically via standard filename: POSITIONNAME.First.LastName.image</p>
+      </div>
+      <button class="btn-outline" id="btn-config-board">Edit Officer Names</button>
+    </div>
     
-    <div class="grid-board">
-      <!-- President -->
-      <div class="board-card">
-        <div class="board-img-container">
-          <img src="President.image" alt="President" class="board-img" onerror="this.src='https://via.placeholder.com/150/000000/00FF66?text=President'">
-        </div>
-        <h4>President</h4>
-        <div class="board-role">Executive Operations</div>
-        <p class="board-desc">Oversees meetings, organizational strategy, and university representation.</p>
-      </div>
-
-      <!-- Vice President -->
-      <div class="board-card">
-        <div class="board-img-container">
-          <img src="VicePresident.image" alt="Vice President" class="board-img" onerror="this.src='https://via.placeholder.com/150/000000/00FF66?text=Vice+President'">
-        </div>
-        <h4>Vice President</h4>
-        <div class="board-role">Recruitment & Operations</div>
-        <p class="board-desc">Chairs internal committees and oversees recruitment and retention endeavors.</p>
-      </div>
-
-      <!-- Treasurer -->
-      <div class="board-card">
-        <div class="board-img-container">
-          <img src="Treasurer.image" alt="Treasurer" class="board-img" onerror="this.src='https://via.placeholder.com/150/000000/00FF66?text=Treasurer'">
-        </div>
-        <h4>Treasurer</h4>
-        <div class="board-role">Financial Assets</div>
-        <p class="board-desc">Manages financial transactions, current ledger accounting, and asset approvals.</p>
-      </div>
-
-      <!-- Secretary -->
-      <div class="board-card">
-        <div class="board-img-container">
-          <img src="Secretary.image" alt="Secretary" class="board-img" onerror="this.src='https://via.placeholder.com/150/000000/00FF66?text=Secretary'">
-        </div>
-        <h4>Secretary</h4>
-        <div class="board-role">Records & Communications</div>
-        <p class="board-desc">Maintains official correspondence, executive minutes, and event records.</p>
-      </div>
-
-      <!-- Marketing Head -->
-      <div class="board-card">
-        <div class="board-img-container">
-          <img src="MarketingHead.image" alt="Marketing Head" class="board-img" onerror="this.src='https://via.placeholder.com/150/000000/00FF66?text=Marketing+Head'">
-        </div>
-        <h4>Marketing Head</h4>
-        <div class="board-role">Media & Outreach</div>
-        <p class="board-desc">Promotes organizational events across physical, digital, and word-of-mouth media.</p>
-      </div>
+    <div class="grid-board" id="board-grid-container">
+      <!-- Generated Dynamically by JavaScript -->
     </div>
   </section>
 
-  <!-- Interactive Scenario Sandbox -->
+  <!-- Micro Practice Simulator -->
   <section id="interactive">
-    <h2 class="section-title">Micro-Interactive Simulator</h2>
+    <h2 class="section-title">Body Language Simulator</h2>
     <div class="interactive-box">
-      <h3>Scenario: The Cold Open Negotiation</h3>
-      <p style="color: #AAA; margin-top: 5px;">In a Communication Night exercise, an executive crosses their arms and leans back while you present your strategy. How do you pivot?</p>
+      <h3>Scenario: The Arms-Crossed Pitch</h3>
+      <p style="color: #AAA; margin-top: 5px;">During a Communication Night deal station, your partner crosses their arms and leans away. What does Article II teach us to do?</p>
       
       <div class="interactive-options">
-        <button class="scenario-btn" onclick="evalScenario('cross')">A) Match their body language to build rapport implicitly.</button>
-        <button class="scenario-btn" onclick="evalScenario('ask')">B) Pause and ask an open-ended strategic question to re-engage them.</button>
-        <button class="scenario-btn" onclick="evalScenario('pitch')">C) Increase verbal speed to finish the presentation quickly.</button>
+        <button class="scenario-btn" onclick="evalScenario('ask')">A) Hand them a paper or ask an open question to naturally open their body posture.</button>
+        <button class="scenario-btn" onclick="evalScenario('talk')">B) Speak louder and faster to finish the presentation early.</button>
+        <button class="scenario-btn" onclick="evalScenario('ignore')">C) Ignore their physical posture and focus purely on your slide deck text.</button>
       </div>
 
       <div id="scenario-result"></div>
     </div>
   </section>
 
-  <!-- Constitution Modal View -->
+  <!-- Constitution Reader Modal -->
   <div class="modal-overlay" id="modal-constitution">
     <div class="modal-container">
       <div class="modal-header">
         <h2>BSCC Constitution</h2>
-        <button class="close-modal" id="close-modal">&times;</button>
+        <button class="close-modal" class="close-const-btn">&times;</button>
       </div>
       <div class="modal-body">
-        <h3>ARTICLE I: NAME</h3>
+        <h3>ARTICLE I — NAME</h3>
         <p>The name of the organization shall be the “Business Strategy & Communications Club” (BSCC).</p>
 
-        <h3>ARTICLE II: PURPOSE & PROGRAMMING</h3>
-        <p>The purpose of the organization shall be to expose students to business communication, decision-making, and psychology, and to sharpen their soft skills...</p>
-        <p><strong>Section I:</strong> BSCC will hold events at least twice a month, including:</p>
+        <h3>ARTICLE II — PURPOSE</h3>
+        <p>The purpose of the organization shall be to expose students to business communication, decision-making, and psychology, and to sharpen their soft skills. Many students do not have the communication skills that come naturally to others. This club hopes to train and hone those skills to teach students how to read and analyze body language, train their speech to communicate better, discuss the importance of business communication, and come up with strategies that allow them to leave impactful impressions that showcase their skills and merits.</p>
+        <p><strong>Section I:</strong> BSCC will hold events at least twice a month including Lecture: Analyzing Body Language, Communication Night, and “What Would YOU Do?” Game Show Night.</p>
+
+        <h3>ARTICLE III — MEMBERSHIP</h3>
+        <p>Membership shall be open to all Rutgers University students and must comply with federal laws prohibiting discrimination on the basis of race, religion, color, national origin, ancestry, age, sex, sexual orientation, gender identity and expression, disability, marital status, military service, and veteran status.</p>
+
+        <h3>ARTICLE IV — EXECUTIVE BOARD OFFICERS</h3>
+        <p>The officers of the Executive Board shall be President, Vice-President, Treasurer, Secretary, and Marketing Head.</p>
         <ul>
-          <li><strong>Lecture: Analyzing Body Language:</strong> Faculty-led sessions on non-verbal communication and Q&A.</li>
-          <li><strong>Communication Nights:</strong> Interactive mock interviews, watercooler talks, and business deal stations.</li>
-          <li><strong>“What Would YOU Do?” Game Show Night:</strong> Team-based strategic scenario competition.</li>
+          <li><strong>Section I (President):</strong> Responsible for overseeing organizational meetings, goals, and official representation.</li>
+          <li><strong>Section II (Treasurer):</strong> Responsible for financial transactions, current reports, and joint approvals.</li>
+          <li><strong>Section III (Vice President):</strong> Serves in presidential absence, chairs committees, oversees recruitment and retention.</li>
+          <li><strong>Section IV (Secretary):</strong> Records activities, maintains official university correspondence, keeps minutes.</li>
+          <li><strong>Section V (Marketing Head):</strong> Promotes events and social media via physical, social, and word-of-mouth media.</li>
         </ul>
 
-        <h3>ARTICLE III: MEMBERSHIP</h3>
-        <p>Open to all Rutgers University students complying with federal non-discrimination standards...</p>
+        <h3>ARTICLE V — ELECTIONS</h3>
+        <p>Elections will take place by Spring Break by secret ballot majority vote. Nominations precede elections by approximately one week. Candidates caught attempting to unfairly siphon votes will be removed from candidacy.</p>
 
-        <h3>ARTICLE IV: EXECUTIVE BOARD</h3>
-        <p>Officers consist of President, Vice-President, Treasurer, Secretary, and Marketing Head.</p>
+        <h3>ARTICLE VI — IMPEACHMENT</h3>
+        <p>Brought by any 3 members on grounds of negligence or severe infraction. Requires two-thirds majority vote of voting members.</p>
 
-        <h3>ARTICLE V: ELECTIONS</h3>
-        <p>Elections occur annually by Spring Break by secret ballot majority vote.</p>
+        <h3>ARTICLE VII — AMENDMENTS</h3>
+        <p>Proposed in writing 1 week prior to vote. Requires 2/3 majority vote subject to Division of Student Affairs approval.</p>
 
-        <h3>ARTICLE VIII: VOTING RIGHTS</h3>
-        <p>Active membership & voting rights require attendance at a minimum of 3 BSCC events/meetings prior to spring elections.</p>
+        <h3>ARTICLE VIII — VOTING RIGHTS</h3>
+        <p>Active membership/voting rights require attendance at a minimum of 3 BSCC events/meetings before spring elections.</p>
+
+        <h3>ARTICLE IX & X — COMPLIANCE</h3>
+        <p>Abides by all applicable laws of the State of New Jersey, United States, and rules of Rutgers University Division of Student Affairs.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RSVP Modal -->
+  <div class="modal-overlay" id="modal-rsvp">
+    <div class="modal-container" style="max-width: 500px;">
+      <div class="modal-header">
+        <h2 id="rsvp-event-title">Event RSVP</h2>
+        <button class="close-modal" id="close-rsvp">&times;</button>
+      </div>
+      <div class="modal-body" style="overflow-y: visible;">
+        <form id="rsvp-form" onsubmit="submitRsvp(event)">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" required placeholder="Rutgers Student Name" />
+          </div>
+          <div class="form-group">
+            <label>Rutgers NetID / Email</label>
+            <input type="email" required placeholder="netid@rutgers.edu" />
+          </div>
+          <button type="submit" class="btn-solid" style="width: 100%; margin-top: 1rem;">Confirm Registration</button>
+        </form>
+        <div id="rsvp-success" style="display:none; text-align:center; padding: 1.5rem 0; color: var(--neon-green); font-family: var(--font-heading);">
+          ✓ RSVP CONFIRMED! SEE YOU THERE.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Officer Name Configurator Modal -->
+  <div class="modal-overlay" id="modal-config">
+    <div class="modal-container" style="max-width: 550px;">
+      <div class="modal-header">
+        <h2>Configure Officer Names</h2>
+        <button class="close-modal" id="close-config">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.82rem; color: #AAA; margin-bottom: 1rem;">Enter names below to dynamically generate target GitHub upload filenames (e.g. <code>President.First.Last.image</code>):</p>
+        <div id="config-inputs-container"></div>
+        <button class="btn-solid" onclick="saveBoardNames()" style="width: 100%; margin-top: 1rem;">Save & Update View</button>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>&copy; Business Strategy & Communications Club (BSCC) | Rutgers University</p>
+    <p>&copy; Business Strategy & Communications Club (BSCC) • Rutgers University</p>
   </footer>
 
   <script>
-    /* Dynamic HTML5 Background Canvas Animation */
+    /* Background Canvas */
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
     let width = canvas.width = window.innerWidth;
@@ -830,29 +856,123 @@
     }
     animateBg();
 
-    /* Modal Toggle Logic */
-    const modal = document.getElementById('modal-constitution');
-    const openBtn = document.getElementById('open-constitution');
-    const viewBtn = document.getElementById('btn-view-const');
-    const closeBtn = document.getElementById('close-modal');
+    /* Board Data & Dynamic Naming */
+    const boardPositions = [
+      { key: 'President', role: 'President' },
+      { key: 'VicePresident', role: 'Vice President' },
+      { key: 'Treasurer', role: 'Treasurer' },
+      { key: 'Secretary', role: 'Secretary' },
+      { key: 'MarketingHead', role: 'Marketing Head' }
+    ];
 
-    const toggleModal = () => modal.classList.toggle('active');
-    [openBtn, viewBtn, closeBtn].forEach(el => el && el.addEventListener('click', toggleModal));
+    let boardData = JSON.parse(localStorage.getItem('bscc_board_names')) || {
+      President: { first: 'First', last: 'Last' },
+      VicePresident: { first: 'First', last: 'Last' },
+      Treasurer: { first: 'First', last: 'Last' },
+      Secretary: { first: 'First', last: 'Last' },
+      MarketingHead: { first: 'First', last: 'Last' }
+    };
 
-    /* Scenario Evaluator */
+    function renderBoardCards() {
+      const container = document.getElementById('board-grid-container');
+      container.innerHTML = '';
+
+      boardPositions.forEach(pos => {
+        const info = boardData[pos.key] || { first: 'First', last: 'Last' };
+        const filename = `${pos.key}.${info.first}.${info.last}.image`;
+
+        const card = document.createElement('div');
+        card.className = 'board-card';
+        card.innerHTML = `
+          <div class="board-img-container">
+            <img src="${filename}" alt="${info.first} ${info.last}" class="board-img" onerror="this.src='https://via.placeholder.com/150/000000/00FF66?text=${pos.key}'">
+          </div>
+          <div class="board-name">${info.first} ${info.last}</div>
+          <div class="board-role">${pos.role}</div>
+          <div class="board-filename">${filename}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderConfigInputs() {
+      const container = document.getElementById('config-inputs-container');
+      container.innerHTML = '';
+
+      boardPositions.forEach(pos => {
+        const info = boardData[pos.key] || { first: '', last: '' };
+        const div = document.createElement('div');
+        div.style.display = 'grid';
+        div.style.gridTemplateColumns = '1fr 1fr';
+        div.style.gap = '10px';
+        div.style.marginBottom = '10px';
+        div.innerHTML = `
+          <div>
+            <label style="font-size:0.75rem; color:var(--neon-green); text-transform:uppercase;">${pos.role} First</label>
+            <input type="text" id="input-${pos.key}-first" value="${info.first}">
+          </div>
+          <div>
+            <label style="font-size:0.75rem; color:var(--neon-green); text-transform:uppercase;">${pos.role} Last</label>
+            <input type="text" id="input-${pos.key}-last" value="${info.last}">
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function saveBoardNames() {
+      boardPositions.forEach(pos => {
+        const first = document.getElementById(`input-${pos.key}-first`).value.trim() || 'First';
+        const last = document.getElementById(`input-${pos.key}-last`).value.trim() || 'Last';
+        boardData[pos.key] = { first, last };
+      });
+      localStorage.setItem('bscc_board_names', JSON.stringify(boardData));
+      renderBoardCards();
+      document.getElementById('modal-config').classList.remove('active');
+    }
+
+    /* Modal Navigation Wiring */
+    const constModal = document.getElementById('modal-constitution');
+    const rsvpModal = document.getElementById('modal-rsvp');
+    const configModal = document.getElementById('modal-config');
+
+    document.getElementById('open-constitution').onclick = () => constModal.classList.add('active');
+    document.getElementById('btn-view-const').onclick = () => constModal.classList.add('active');
+    document.querySelector('.close-modal').onclick = () => constModal.classList.remove('active');
+
+    document.getElementById('open-config-nav').onclick = () => { renderConfigInputs(); configModal.classList.add('active'); };
+    document.getElementById('btn-config-board').onclick = () => { renderConfigInputs(); configModal.classList.add('active'); };
+    document.getElementById('close-config').onclick = () => configModal.classList.remove('active');
+
+    document.getElementById('close-rsvp').onclick = () => rsvpModal.classList.remove('active');
+
+    function openRsvp(title) {
+      document.getElementById('rsvp-event-title').innerText = title;
+      document.getElementById('rsvp-form').style.display = 'block';
+      document.getElementById('rsvp-success').style.display = 'none';
+      rsvpModal.classList.add('active');
+    }
+
+    function submitRsvp(e) {
+      e.preventDefault();
+      document.getElementById('rsvp-form').style.display = 'none';
+      document.getElementById('rsvp-success').style.display = 'block';
+    }
+
+    /* Interactive Simulator */
     function evalScenario(type) {
       const res = document.getElementById('scenario-result');
       res.style.display = 'block';
       if (type === 'ask') {
-        res.innerHTML = "<strong style='color:var(--neon-green)'>OPTIMAL PIVOT:</strong> Asking an open question breaks passive resistance, forcing physical posture shifts and inviting collaboration.";
-      } else if (type === 'cross') {
-        res.innerHTML = "<strong style='color:#FFF'>NEUTRAL:</strong> Matching posture builds mirror rapport, but doesn't resolve structural non-verbal disengagement.";
+        res.innerHTML = "<strong style='color:var(--neon-green)'>CORRECT PIVOT (Article II):</strong> Handing a prop or asking a question changes physical engagement, unlocking closed body language dynamically.";
+      } else if (type === 'talk') {
+        res.innerHTML = "<strong style='color:#FF3366'>SUB-OPTIMAL:</strong> Accelerating pitch and speed signals anxiety, reinforcing passive disengagement.";
       } else {
-        res.innerHTML = "<strong style='color:#FF3366'>SUB-OPTIMAL:</strong> Accelerating speech communicates anxiety under pressure, often increasing audience detachment.";
+        res.innerHTML = "<strong style='color:#FFF'>NEUTRAL:</strong> Ignoring non-verbal cues misses key strategic psychological feedback highlighted in Article II.";
       }
     }
 
-    /* Event Filtering */
+    /* Event Filters */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const eventCards = document.querySelectorAll('.event-card');
 
@@ -863,7 +983,7 @@
         const filter = btn.dataset.filter;
 
         eventCards.forEach(card => {
-          if (filter === 'all' || card.dataset.category.includes(filter)) {
+          if (filter === 'all' || card.dataset.category === filter) {
             card.style.display = 'flex';
           } else {
             card.style.display = 'none';
@@ -871,6 +991,9 @@
         });
       });
     });
+
+    /* Initial Setup */
+    renderBoardCards();
   </script>
 </body>
 </html>
