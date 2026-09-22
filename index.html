@@ -31,7 +31,7 @@
       line-height: 1.6; 
     }
 
-    /* Background hero image wrapper positioned directly behind hero title text */
+    /* Background hero image wrapper positioned behind soundwaves canvas and title text */
     .hero-bg-image-wrapper {
       position: fixed;
       top: 45%;
@@ -39,7 +39,7 @@
       transform: translate(-50%, -50%) scale(1);
       width: min(85vw, 620px);
       height: min(85vw, 620px);
-      z-index: 0; /* Deep background: behind soundwave canvas (z: 1) and main text (z: 5) */
+      z-index: 0; /* Behind soundwaves canvas (z: 1) and main content (z: 5) */
       pointer-events: none;
       opacity: 0.35;
       filter: contrast(115%) drop-shadow(0 0 35px rgba(0, 255, 102, 0.2));
@@ -56,7 +56,7 @@
       object-fit: contain;
     }
 
-    /* Animated soundwaves canvas overlaying the background image */
+    /* Animated soundwaves canvas overlaying background image */
     #bg-canvas { 
       position: fixed; 
       top: 0; 
@@ -67,7 +67,7 @@
       pointer-events: none; 
     }
 
-    /* Navbar styling without top-corner logo image */
+    /* Navbar without top-left logo image */
     nav {
       position: fixed; 
       top: 0; 
@@ -651,7 +651,7 @@
   </footer>
 
   <script>
-    /* Scroll listener to shrink/enlarge hero background image */
+    /* Scroll listener to shrink/enlarge background logo behind title */
     const heroBgImage = document.getElementById('heroBgImage');
     const maxScroll = 550; // Scroll distance for complete shrink
 
@@ -659,7 +659,7 @@
       const scrollY = window.scrollY;
       const progress = Math.min(scrollY / maxScroll, 1);
       
-      // Scale down from 1.0 -> 0 as user scrolls down; grows back as user scrolls up
+      // Scale down from 1.0 -> 0 as user scrolls down; grows back as user scrolls up to top
       const scale = Math.max(1 - progress, 0);
       const opacity = Math.max(0.35 * (1 - progress), 0);
 
@@ -752,20 +752,7 @@
       detailModal.classList.add('active');
     }
 
-    /* Scenario evaluation widget */
-    function evalScenario(type) {
-      const res = document.getElementById('scenario-result');
-      res.style.display = 'block';
-      if (type === 'ask') {
-        res.innerHTML = "<strong style='color:var(--neon-green)'>EFFECTIVE STRATEGY:</strong> Handing a physical document or asking an open-ended question alters body language naturally.";
-      } else if (type === 'talk') {
-        res.innerHTML = "<strong style='color:#FF3366'>SUB-OPTIMAL:</strong> Accelerating pitch and speed creates friction rather than engagement.";
-      } else {
-        res.innerHTML = "<strong style='color:#FFF'>NEUTRAL:</strong> Ignoring physical non-verbal signals misses critical body language insights.";
-      }
-    }
-
-    /* Event category filters */
+    /* Event Category Filtering */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const eventCards = document.querySelectorAll('.event-card');
 
@@ -773,12 +760,36 @@
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const filter = btn.dataset.filter;
+        const filter = btn.getAttribute('data-filter');
+
         eventCards.forEach(card => {
-          card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'flex' : 'none';
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
         });
       });
     });
+
+    /* Interactive Practice Scenario Handler */
+    function evalScenario(choice) {
+      const resultBox = document.getElementById('scenario-result');
+      resultBox.style.display = 'block';
+      if (choice === 'ask') {
+        resultBox.innerHTML = '<strong style="color: var(--neon-green);">Correct!</strong> Handing someone a physical document or asking an open question forces them to break their closed body posture and re-engage physically.';
+      } else if (choice === 'talk') {
+        resultBox.innerHTML = '<strong style="color: #FF4D4D;">Incorrect.</strong> Talking faster increases tension and pressure when the other party is already defensive.';
+      } else {
+        resultBox.innerHTML = '<strong style="color: #FF4D4D;">Incorrect.</strong> Ignoring non-verbal cues causes you to miss critical feedback during strategic communications.';
+      }
+    }
+
+    /* Close modal when clicking on overlay background */
+    window.onclick = (e) => {
+      if (e.target === constModal) constModal.classList.remove('active');
+      if (e.target === detailModal) detailModal.classList.remove('active');
+    };
   </script>
 </body>
 </html>
