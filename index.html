@@ -106,7 +106,7 @@
     }
 
     .hero {
-      min-height: 85vh;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -142,9 +142,10 @@
 
     .hero p {
       font-size: clamp(1rem, 1.8vw, 1.2rem);
-      max-width: 750px;
+      max-width: 800px;
       color: #DDD;
       margin-bottom: 2.5rem;
+      line-height: 1.6;
     }
 
     .btn-group {
@@ -206,44 +207,39 @@
       padding-left: 1rem;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
+    /* Core Objectives List Container */
+    .objectives-card {
       background: var(--card-bg);
       border: 1px solid var(--outline-white);
-      padding: 2rem;
+      padding: 2.5rem;
       transition: all 0.3s ease;
     }
 
-    .card:hover {
+    .objectives-card:hover {
       border-color: var(--neon-green);
-      transform: translateY(-4px);
-      box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+      box-shadow: 0 0 25px rgba(0, 255, 102, 0.15);
     }
 
-    .card-icon {
-      font-size: 1.2rem;
+    .objectives-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .objectives-list li {
+      position: relative;
+      padding-left: 2rem;
+      font-size: 1.05rem;
+      color: #EEE;
+    }
+
+    .objectives-list li::before {
+      content: "➔";
+      position: absolute;
+      left: 0;
       color: var(--neon-green);
-      font-family: var(--font-heading);
-      margin-bottom: 1rem;
       font-weight: bold;
-    }
-
-    .card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-    }
-
-    .card p {
-      color: #BBB;
-      font-size: 0.92rem;
-      line-height: 1.5;
     }
 
     .events-filter {
@@ -268,6 +264,12 @@
     .filter-btn.active, .filter-btn:hover {
       border-color: var(--neon-green);
       color: var(--neon-green);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
 
     .event-card {
@@ -325,7 +327,7 @@
       flex-grow: 1;
     }
 
-    .event-date {
+    .event-location {
       color: var(--neon-green);
       font-family: var(--font-heading);
       font-size: 0.85rem;
@@ -526,34 +528,6 @@
       margin-bottom: 1rem;
     }
 
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: 0.85rem;
-      color: var(--neon-green);
-      margin-bottom: 0.4rem;
-      text-transform: uppercase;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 10px;
-      background: #111;
-      border: 1px solid var(--outline-white);
-      color: #FFF;
-      font-family: var(--font-body);
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--neon-green);
-      box-shadow: 0 0 8px var(--neon-green-glow);
-    }
-
     footer {
       border-top: 1px solid var(--outline-dim);
       padding: 3rem 8%;
@@ -579,8 +553,8 @@
       <span>BSCC</span>
     </div>
     <ul class="nav-links">
-      <li><a href="#about">Purpose</a></li>
-      <li><a href="#events">Events</a></li>
+      <li><a href="#about">Objectives</a></li>
+      <li><a href="#events">Showcase</a></li>
       <li><a href="#board">E-Board</a></li>
       <li><a href="#interactive">Practice</a></li>
       <li><a id="open-config-nav">Config Names</a></li>
@@ -589,44 +563,36 @@
   </nav>
 
   <section class="hero">
-    <div class="badge">Rutgers University Organization</div>
+    <div class="badge">Rutgers Business School</div>
     <h1>Business Strategy & <br><span>Communications Club</span></h1>
-    <p>Exposing students to business communication, decision-making, and psychology to hone natural soft skills, analyze body language, and showcase real merits.</p>
+    <!-- Single-sentence condensed Mission Statement -->
+    <p>BSCC exposes students to business communication, decision-making, and psychology to hone soft skills, analyze body language, refine speech, and build strategies for leaving impactful impressions that showcase true merits.</p>
     <div class="btn-group">
-      <a href="#events" class="btn-solid">Explore Events</a>
+      <a href="#events" class="btn-solid">Event Showcase</a>
       <button class="btn-outline" id="btn-view-const">Read Constitution</button>
     </div>
   </section>
 
-  <!-- Purpose & Core Pillars directly mapped to Article II -->
+  <!-- Core Objectives Section -->
   <section id="about">
-    <h2 class="section-title">Article II: Purpose & Values</h2>
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-icon">[01]</div>
-        <h3>Exposure & Psychology</h3>
-        <p>Expose students to business communication, decision-making, and psychology. Many students do not have communication skills that come naturally to others; BSCC provides structured training.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">[02]</div>
-        <h3>Body Language & Speech</h3>
-        <p>Train and hone skills to read and analyze body language, refine speech patterns, discuss business communication, and build strategies to leave impactful impressions showcase merits.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">[03]</div>
-        <h3>Bi-Monthly Programming</h3>
-        <p>Maintain consistent event execution holding interactive events at least twice a month to practice soft skills in real time before stepping into professional environments.</p>
-      </div>
+    <h2 class="section-title">Core Objectives</h2>
+    <div class="objectives-card">
+      <ul class="objectives-list">
+        <li>Read and analyze body language</li>
+        <li>Train speech to communicate better</li>
+        <li>Discuss the importance of business communication</li>
+        <li>Come up with strategies that allow students to leave impactful impressions that showcase their skills and merits</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Events Section mapped to Article II Section I -->
+  <!-- Event Showcase Section (All events held at RBS) -->
   <section id="events">
-    <h2 class="section-title">Events & Programming</h2>
-    <p style="margin-bottom: 1.5rem; color: #AAA;">In accordance with Article II Section I, BSCC holds official events at least twice a month.</p>
+    <h2 class="section-title">Event Showcase</h2>
+    <p style="margin-bottom: 1.5rem; color: #AAA;">All BSCC events are held at <strong>Rutgers Business School (RBS)</strong>. Official event registration is released via our Instagram and GroupMe.</p>
 
     <div class="events-filter">
-      <button class="filter-btn active" data-filter="all">All Programming</button>
+      <button class="filter-btn active" data-filter="all">All Events</button>
       <button class="filter-btn" data-filter="lecture">Lectures</button>
       <button class="filter-btn" data-filter="workshop">Workshops</button>
       <button class="filter-btn" data-filter="competition">Competitions</button>
@@ -640,10 +606,10 @@
           <span class="event-tag">Lecture + Q&A</span>
         </div>
         <div class="event-body">
-          <div class="event-date">ARTICLE II • SECTION I</div>
+          <div class="event-location">LOCATION: RUTGERS BUSINESS SCHOOL (RBS)</div>
           <h3 class="event-title">Lecture: Analyzing Body Language</h3>
-          <p class="event-desc">Featuring psychology and humanities/management faculty discussing non-verbal gestures in interviews, deals, and daily discussions, followed by an interactive Q&A.</p>
-          <button class="btn-outline rsvp-btn" onclick="openRsvp('Lecture: Analyzing Body Language')">RSVP / Details</button>
+          <p class="event-desc">Featuring psychology and management faculty to discuss reading physical gestures during interviews, deals, and discussions.</p>
+          <button class="btn-outline" onclick="showEventDetails('Lecture: Analyzing Body Language', 'Features guest professors in psychology and management discussing how to read physical gestures and behaviors during key aspects of business (interviews, deals, day-to-day discussions) and how to respond effectively. Followed by an interactive Q&A session.')">Event Details</button>
         </div>
       </div>
 
@@ -654,10 +620,10 @@
           <span class="event-tag">Practice Stations</span>
         </div>
         <div class="event-body">
-          <div class="event-date">ARTICLE II • SECTION I</div>
+          <div class="event-location">LOCATION: RUTGERS BUSINESS SCHOOL (RBS)</div>
           <h3 class="event-title">Communication Night</h3>
-          <p class="event-desc">Dedicated stations featuring mock interviews, watercooler conversations, and business deal negotiations for active skill assessment and live peer feedback.</p>
-          <button class="btn-outline rsvp-btn" onclick="openRsvp('Communication Night')">RSVP / Details</button>
+          <p class="event-desc">Interactive station rotations: Mock Interviews, Watercooler Conversations, and Business Deals for active assessment.</p>
+          <button class="btn-outline" onclick="showEventDetails('Communication Night', 'Members and guests participate in dynamic interactive stations including mock interviews, watercooler conversations, and business deal negotiations. Test your communication skills in real-time and receive constructive peer and board evaluations.')">Event Details</button>
         </div>
       </div>
 
@@ -668,41 +634,39 @@
           <span class="event-tag">Game Show</span>
         </div>
         <div class="event-body">
-          <div class="event-date">ARTICLE II • SECTION I</div>
+          <div class="event-location">LOCATION: RUTGERS BUSINESS SCHOOL (RBS)</div>
           <h3 class="event-title">“What Would YOU Do?” Game Show Night</h3>
-          <p class="event-desc">Family Feud/Jeopardy style prompt competition in teams of two. Fast and effective scenario responses earn points and physical prizes.</p>
-          <button class="btn-outline rsvp-btn" onclick="openRsvp('“What Would YOU Do?” Game Show Night')">RSVP / Details</button>
+          <p class="event-desc">Family Feud/Jeopardy style prompt competition. Teams of two respond to scenarios quickly and effectively to win prizes.</p>
+          <button class="btn-outline" onclick="showEventDetails('“What Would YOU Do?” Game Show Night', 'A Family Feud / Jeopardy-style game show night. Teams of two are given live business scenarios and prompt challenges. The side coming up with the most correct and effective response the quickest earns points to win prizes like notebooks, sticky pads, and club gear.')">Event Details</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Executive Board Section with Dynamic Names -->
+  <!-- Executive Board Section -->
   <section id="board">
     <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
       <div>
         <h2 class="section-title" style="margin-bottom: 0.5rem;">Executive Board</h2>
-        <p style="color: #888;">Images load automatically via standard filename: POSITIONNAME.First.LastName.image</p>
+        <p style="color: #888;">Filename format: <code>POSITIONNAME.First.LastName.image</code></p>
       </div>
       <button class="btn-outline" id="btn-config-board">Edit Officer Names</button>
     </div>
     
-    <div class="grid-board" id="board-grid-container">
-      <!-- Generated Dynamically by JavaScript -->
-    </div>
+    <div class="grid-board" id="board-grid-container"></div>
   </section>
 
-  <!-- Micro Practice Simulator -->
+  <!-- Practice Simulator -->
   <section id="interactive">
-    <h2 class="section-title">Body Language Simulator</h2>
+    <h2 class="section-title">Body Language Practice</h2>
     <div class="interactive-box">
-      <h3>Scenario: The Arms-Crossed Pitch</h3>
-      <p style="color: #AAA; margin-top: 5px;">During a Communication Night deal station, your partner crosses their arms and leans away. What does Article II teach us to do?</p>
+      <h3>Scenario: Reading Non-Verbal Feedback</h3>
+      <p style="color: #AAA; margin-top: 5px;">During a deal station at RBS, your counterparty crosses their arms and leans back. How do you pivot?</p>
       
       <div class="interactive-options">
-        <button class="scenario-btn" onclick="evalScenario('ask')">A) Hand them a paper or ask an open question to naturally open their body posture.</button>
-        <button class="scenario-btn" onclick="evalScenario('talk')">B) Speak louder and faster to finish the presentation early.</button>
-        <button class="scenario-btn" onclick="evalScenario('ignore')">C) Ignore their physical posture and focus purely on your slide deck text.</button>
+        <button class="scenario-btn" onclick="evalScenario('ask')">A) Hand them a document or ask an open question to unlock closed body language.</button>
+        <button class="scenario-btn" onclick="evalScenario('talk')">B) Speak faster to get through your talking points quickly.</button>
+        <button class="scenario-btn" onclick="evalScenario('ignore')">C) Ignore their physical posture and focus purely on reading your notes.</button>
       </div>
 
       <div id="scenario-result"></div>
@@ -714,68 +678,41 @@
     <div class="modal-container">
       <div class="modal-header">
         <h2>BSCC Constitution</h2>
-        <button class="close-modal" class="close-const-btn">&times;</button>
+        <button class="close-modal" id="close-const-btn">&times;</button>
       </div>
       <div class="modal-body">
         <h3>ARTICLE I — NAME</h3>
         <p>The name of the organization shall be the “Business Strategy & Communications Club” (BSCC).</p>
 
-        <h3>ARTICLE II — PURPOSE</h3>
+        <h3>ARTICLE II — PURPOSE & PROGRAMMING</h3>
         <p>The purpose of the organization shall be to expose students to business communication, decision-making, and psychology, and to sharpen their soft skills. Many students do not have the communication skills that come naturally to others. This club hopes to train and hone those skills to teach students how to read and analyze body language, train their speech to communicate better, discuss the importance of business communication, and come up with strategies that allow them to leave impactful impressions that showcase their skills and merits.</p>
-        <p><strong>Section I:</strong> BSCC will hold events at least twice a month including Lecture: Analyzing Body Language, Communication Night, and “What Would YOU Do?” Game Show Night.</p>
 
         <h3>ARTICLE III — MEMBERSHIP</h3>
-        <p>Membership shall be open to all Rutgers University students and must comply with federal laws prohibiting discrimination on the basis of race, religion, color, national origin, ancestry, age, sex, sexual orientation, gender identity and expression, disability, marital status, military service, and veteran status.</p>
+        <p>Membership shall be open to all Rutgers University students complying with university guidelines and non-discrimination laws.</p>
 
         <h3>ARTICLE IV — EXECUTIVE BOARD OFFICERS</h3>
         <p>The officers of the Executive Board shall be President, Vice-President, Treasurer, Secretary, and Marketing Head.</p>
-        <ul>
-          <li><strong>Section I (President):</strong> Responsible for overseeing organizational meetings, goals, and official representation.</li>
-          <li><strong>Section II (Treasurer):</strong> Responsible for financial transactions, current reports, and joint approvals.</li>
-          <li><strong>Section III (Vice President):</strong> Serves in presidential absence, chairs committees, oversees recruitment and retention.</li>
-          <li><strong>Section IV (Secretary):</strong> Records activities, maintains official university correspondence, keeps minutes.</li>
-          <li><strong>Section V (Marketing Head):</strong> Promotes events and social media via physical, social, and word-of-mouth media.</li>
-        </ul>
 
         <h3>ARTICLE V — ELECTIONS</h3>
-        <p>Elections will take place by Spring Break by secret ballot majority vote. Nominations precede elections by approximately one week. Candidates caught attempting to unfairly siphon votes will be removed from candidacy.</p>
-
-        <h3>ARTICLE VI — IMPEACHMENT</h3>
-        <p>Brought by any 3 members on grounds of negligence or severe infraction. Requires two-thirds majority vote of voting members.</p>
-
-        <h3>ARTICLE VII — AMENDMENTS</h3>
-        <p>Proposed in writing 1 week prior to vote. Requires 2/3 majority vote subject to Division of Student Affairs approval.</p>
-
-        <h3>ARTICLE VIII — VOTING RIGHTS</h3>
-        <p>Active membership/voting rights require attendance at a minimum of 3 BSCC events/meetings before spring elections.</p>
-
-        <h3>ARTICLE IX & X — COMPLIANCE</h3>
-        <p>Abides by all applicable laws of the State of New Jersey, United States, and rules of Rutgers University Division of Student Affairs.</p>
+        <p>Elections take place by Spring Break by secret ballot. Active membership/voting rights require attendance at a minimum of 3 BSCC events/meetings prior to elections.</p>
       </div>
     </div>
   </div>
 
-  <!-- RSVP Modal -->
-  <div class="modal-overlay" id="modal-rsvp">
-    <div class="modal-container" style="max-width: 500px;">
+  <!-- Event Details Modal -->
+  <div class="modal-overlay" id="modal-event-detail">
+    <div class="modal-container" style="max-width: 600px;">
       <div class="modal-header">
-        <h2 id="rsvp-event-title">Event RSVP</h2>
-        <button class="close-modal" id="close-rsvp">&times;</button>
+        <h2 id="detail-title">Event Overview</h2>
+        <button class="close-modal" id="close-detail">&times;</button>
       </div>
-      <div class="modal-body" style="overflow-y: visible;">
-        <form id="rsvp-form" onsubmit="submitRsvp(event)">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" required placeholder="Rutgers Student Name" />
-          </div>
-          <div class="form-group">
-            <label>Rutgers NetID / Email</label>
-            <input type="email" required placeholder="netid@rutgers.edu" />
-          </div>
-          <button type="submit" class="btn-solid" style="width: 100%; margin-top: 1rem;">Confirm Registration</button>
-        </form>
-        <div id="rsvp-success" style="display:none; text-align:center; padding: 1.5rem 0; color: var(--neon-green); font-family: var(--font-heading);">
-          ✓ RSVP CONFIRMED! SEE YOU THERE.
+      <div class="modal-body">
+        <div style="background: rgba(0,255,102,0.1); border: 1px solid var(--neon-green); padding: 10px 15px; margin-bottom: 1.2rem; color: var(--neon-green); font-family: var(--font-heading); font-size: 0.85rem;">
+          📍 LOCATION: RUTGERS BUSINESS SCHOOL (RBS)
+        </div>
+        <p id="detail-description" style="color: #DDD; font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.5rem;"></p>
+        <div style="border-top: 1px solid var(--outline-dim); padding-top: 1rem; color: #AAA; font-size: 0.85rem;">
+          💡 <em>Registration and attendance updates are published directly on our official <strong>Instagram</strong> and <strong>GroupMe</strong>.</em>
         </div>
       </div>
     </div>
@@ -789,7 +726,7 @@
         <button class="close-modal" id="close-config">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 0.82rem; color: #AAA; margin-bottom: 1rem;">Enter names below to dynamically generate target GitHub upload filenames (e.g. <code>President.First.Last.image</code>):</p>
+        <p style="font-size: 0.82rem; color: #AAA; margin-bottom: 1rem;">Set board member names to automatically update filenames (e.g. <code>President.First.Last.image</code>):</p>
         <div id="config-inputs-container"></div>
         <button class="btn-solid" onclick="saveBoardNames()" style="width: 100%; margin-top: 1rem;">Save & Update View</button>
       </div>
@@ -797,11 +734,11 @@
   </div>
 
   <footer>
-    <p>&copy; Business Strategy & Communications Club (BSCC) • Rutgers University</p>
+    <p>&copy; Business Strategy & Communications Club (BSCC) • Rutgers Business School</p>
   </footer>
 
   <script>
-    /* Background Canvas */
+    /* Background Canvas Animation */
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
     let width = canvas.width = window.innerWidth;
@@ -856,7 +793,7 @@
     }
     animateBg();
 
-    /* Board Data & Dynamic Naming */
+    /* Board Dynamic Naming Data */
     const boardPositions = [
       { key: 'President', role: 'President' },
       { key: 'VicePresident', role: 'Vice President' },
@@ -909,11 +846,11 @@
         div.innerHTML = `
           <div>
             <label style="font-size:0.75rem; color:var(--neon-green); text-transform:uppercase;">${pos.role} First</label>
-            <input type="text" id="input-${pos.key}-first" value="${info.first}">
+            <input type="text" id="input-${pos.key}-first" value="${info.first}" style="width:100%; padding:8px; background:#111; border:1px solid #FFF; color:#FFF;">
           </div>
           <div>
             <label style="font-size:0.75rem; color:var(--neon-green); text-transform:uppercase;">${pos.role} Last</label>
-            <input type="text" id="input-${pos.key}-last" value="${info.last}">
+            <input type="text" id="input-${pos.key}-last" value="${info.last}" style="width:100%; padding:8px; background:#111; border:1px solid #FFF; color:#FFF;">
           </div>
         `;
         container.appendChild(div);
@@ -931,32 +868,25 @@
       document.getElementById('modal-config').classList.remove('active');
     }
 
-    /* Modal Navigation Wiring */
+    /* Modal Controls */
     const constModal = document.getElementById('modal-constitution');
-    const rsvpModal = document.getElementById('modal-rsvp');
+    const detailModal = document.getElementById('modal-event-detail');
     const configModal = document.getElementById('modal-config');
 
     document.getElementById('open-constitution').onclick = () => constModal.classList.add('active');
     document.getElementById('btn-view-const').onclick = () => constModal.classList.add('active');
-    document.querySelector('.close-modal').onclick = () => constModal.classList.remove('active');
+    document.getElementById('close-const-btn').onclick = () => constModal.classList.remove('active');
 
     document.getElementById('open-config-nav').onclick = () => { renderConfigInputs(); configModal.classList.add('active'); };
     document.getElementById('btn-config-board').onclick = () => { renderConfigInputs(); configModal.classList.add('active'); };
     document.getElementById('close-config').onclick = () => configModal.classList.remove('active');
 
-    document.getElementById('close-rsvp').onclick = () => rsvpModal.classList.remove('active');
+    document.getElementById('close-detail').onclick = () => detailModal.classList.remove('active');
 
-    function openRsvp(title) {
-      document.getElementById('rsvp-event-title').innerText = title;
-      document.getElementById('rsvp-form').style.display = 'block';
-      document.getElementById('rsvp-success').style.display = 'none';
-      rsvpModal.classList.add('active');
-    }
-
-    function submitRsvp(e) {
-      e.preventDefault();
-      document.getElementById('rsvp-form').style.display = 'none';
-      document.getElementById('rsvp-success').style.display = 'block';
+    function showEventDetails(title, description) {
+      document.getElementById('detail-title').innerText = title;
+      document.getElementById('detail-description').innerText = description;
+      detailModal.classList.add('active');
     }
 
     /* Interactive Simulator */
@@ -964,15 +894,15 @@
       const res = document.getElementById('scenario-result');
       res.style.display = 'block';
       if (type === 'ask') {
-        res.innerHTML = "<strong style='color:var(--neon-green)'>CORRECT PIVOT (Article II):</strong> Handing a prop or asking a question changes physical engagement, unlocking closed body language dynamically.";
+        res.innerHTML = "<strong style='color:var(--neon-green)'>EFFECTIVE STRATEGY:</strong> Handing a physical item or asking an open-ended question alters body language naturally.";
       } else if (type === 'talk') {
-        res.innerHTML = "<strong style='color:#FF3366'>SUB-OPTIMAL:</strong> Accelerating pitch and speed signals anxiety, reinforcing passive disengagement.";
+        res.innerHTML = "<strong style='color:#FF3366'>SUB-OPTIMAL:</strong> Accelerating pitch and speech creates friction rather than engagement.";
       } else {
-        res.innerHTML = "<strong style='color:#FFF'>NEUTRAL:</strong> Ignoring non-verbal cues misses key strategic psychological feedback highlighted in Article II.";
+        res.innerHTML = "<strong style='color:#FFF'>NEUTRAL:</strong> Ignoring physical non-verbal signals misses critical body language insights.";
       }
     }
 
-    /* Event Filters */
+    /* Filtering logic */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const eventCards = document.querySelectorAll('.event-card');
 
@@ -992,7 +922,6 @@
       });
     });
 
-    /* Initial Setup */
     renderBoardCards();
   </script>
 </body>
