@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BSCC | Business Strategy & Communications Club</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-black: #000000;
@@ -15,532 +12,96 @@
       --outline-dim: rgba(255, 255, 255, 0.2);
       --neon-green: #00FF66;
       --neon-green-glow: rgba(0, 255, 102, 0.4);
-      --font-heading: 'Space Grotesk', sans-serif;
-      --font-body: 'Inter', sans-serif;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-black); color: #FFF; font-family: var(--font-main); overflow-x: hidden; line-height: 1.6; }
 
-    body {
-      background-color: var(--bg-black);
-      color: #FFFFFF;
-      font-family: var(--font-body);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    #bg-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      pointer-events: none;
-    }
+    #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
 
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 4%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--outline-dim);
-      z-index: 1000;
+      position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between;
+      align-items: center; padding: 1rem 4%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--outline-dim); z-index: 1000;
     }
 
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 1.2rem;
-      letter-spacing: 1px;
-    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
+    .brand-logo-img { width: 36px; height: 36px; border-radius: 4px; border: 1px solid var(--neon-green); object-fit: cover; background: #111; }
 
-    .brand-logo-img {
-      width: 36px;
-      height: 36px;
-      border-radius: 4px;
-      border: 1px solid var(--neon-green);
-      object-fit: cover;
-      background: #111;
-    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: #FFF; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.2s; cursor: pointer; }
+    .nav-links a:hover { color: var(--neon-green); }
 
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      align-items: center;
-    }
+    section { padding: 6rem 8% 4rem; max-width: 1300px; margin: 0 auto; }
 
-    .nav-links a {
-      color: #FFF;
-      text-decoration: none;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
+    .hero { min-height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-top: 6rem; }
+    .badge { display: inline-block; border: 1px solid var(--neon-green); color: var(--neon-green); padding: 4px 12px; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; box-shadow: 0 0 10px var(--neon-green-glow); }
 
-    .nav-links a:hover {
-      color: var(--neon-green);
-      text-shadow: 0 0 8px var(--neon-green-glow);
-    }
+    .hero h1 { font-size: clamp(2.2rem, 5.5vw, 4.2rem); line-height: 1.1; text-transform: uppercase; margin-bottom: 1.5rem; font-weight: 700; }
+    .hero h1 span { color: var(--neon-green); }
+    .hero p { font-size: clamp(1rem, 1.8vw, 1.2rem); max-width: 800px; color: #DDD; margin-bottom: 2.5rem; }
 
-    section {
-      padding: 6rem 8% 4rem;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-outline { border: 1px solid var(--outline-white); background: transparent; color: #FFF; padding: 12px 28px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; }
+    .btn-outline:hover { border-color: var(--neon-green); color: var(--neon-green); box-shadow: 0 0 15px var(--neon-green-glow); }
+    
+    .btn-solid { border: 1px solid var(--neon-green); background: var(--neon-green); color: #000; padding: 12px 28px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-solid:hover { box-shadow: 0 0 20px var(--neon-green); }
 
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding-top: 8rem;
-    }
+    .section-title { font-size: 2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; border-left: 4px solid var(--neon-green); padding-left: 1rem; }
 
-    .badge {
-      display: inline-block;
-      border: 1px solid var(--neon-green);
-      color: var(--neon-green);
-      padding: 4px 12px;
-      font-family: var(--font-heading);
-      font-size: 0.8rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 0 10px var(--neon-green-glow);
-    }
+    .objectives-card { background: var(--card-bg); border: 1px solid var(--outline-white); padding: 2.5rem; }
+    .objectives-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .objectives-list li { position: relative; padding-left: 2rem; font-size: 1.05rem; color: #EEE; }
+    .objectives-list li::before { content: "➔"; position: absolute; left: 0; color: var(--neon-green); font-weight: bold; }
 
-    .hero h1 {
-      font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 5.5vw, 4.5rem);
-      line-height: 1.1;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
+    .events-filter { display: flex; gap: 10px; margin-bottom: 2rem; flex-wrap: wrap; }
+    .filter-btn { background: transparent; border: 1px solid var(--outline-dim); color: #AAA; padding: 6px 16px; cursor: pointer; text-transform: uppercase; font-size: 0.85rem; }
+    .filter-btn.active, .filter-btn:hover { border-color: var(--neon-green); color: var(--neon-green); }
 
-    .hero h1 span {
-      color: var(--neon-green);
-    }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .event-card { display: flex; flex-direction: column; border: 1px solid var(--outline-white); background: var(--card-bg); overflow: hidden; }
+    .event-card:hover { border-color: var(--neon-green); box-shadow: 0 0 20px var(--neon-green-glow); }
 
-    .hero p {
-      font-size: clamp(1rem, 1.8vw, 1.2rem);
-      max-width: 800px;
-      color: #DDD;
-      margin-bottom: 2.5rem;
-      line-height: 1.6;
-    }
+    .event-img-wrapper { height: 180px; width: 100%; position: relative; background: #111; border-bottom: 1px solid var(--outline-dim); }
+    .event-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%); transition: filter 0.2s; }
+    .event-card:hover .event-img { filter: grayscale(0%); }
 
-    .btn-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .event-tag { position: absolute; top: 12px; right: 12px; background: #000; border: 1px solid var(--neon-green); color: var(--neon-green); font-size: 0.75rem; padding: 2px 8px; text-transform: uppercase; }
+    .event-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .event-location { color: var(--neon-green); font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .event-title { font-size: 1.2rem; margin-bottom: 0.8rem; text-transform: uppercase; }
+    .event-desc { color: #AAA; font-size: 0.88rem; margin-bottom: 1.5rem; flex-grow: 1; }
 
-    .btn-outline {
-      border: 1px solid var(--outline-white);
-      background: transparent;
-      color: #FFF;
-      padding: 12px 28px;
-      font-family: var(--font-heading);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .grid-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .board-card { border: 1px solid var(--outline-white); background: var(--card-bg); text-align: center; padding: 2rem 1rem; transition: border-color 0.2s; }
+    .board-card:hover { border-color: var(--neon-green); }
 
-    .btn-outline:hover {
-      border-color: var(--neon-green);
-      color: var(--neon-green);
-      box-shadow: 0 0 15px var(--neon-green-glow);
-      transform: translateY(-2px);
-    }
+    .board-img-container { width: 120px; height: 120px; margin: 0 auto 1.2rem; border-radius: 50%; border: 2px solid var(--neon-green); overflow: hidden; background: #111; }
+    .board-img { width: 100%; height: 100%; object-fit: cover; }
+    .board-name { font-size: 1.1rem; text-transform: uppercase; color: #FFF; margin-bottom: 0.2rem; }
+    .board-role { color: var(--neon-green); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
 
-    .btn-solid {
-      border: 1px solid var(--neon-green);
-      background: var(--neon-green);
-      color: #000;
-      padding: 12px 28px;
-      font-family: var(--font-heading);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
+    .interactive-box { border: 1px solid var(--outline-white); background: var(--card-bg); padding: 2.5rem; margin-top: 1rem; }
+    .interactive-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .scenario-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--outline-dim); color: #FFF; padding: 1rem; text-align: left; cursor: pointer; transition: background 0.2s; }
+    .scenario-btn:hover { border-color: var(--neon-green); background: rgba(0, 255, 102, 0.05); }
 
-    .btn-solid:hover {
-      box-shadow: 0 0 20px var(--neon-green);
-      transform: translateY(-2px);
-    }
+    #scenario-result { margin-top: 1.5rem; padding: 1rem; border-left: 2px solid var(--neon-green); background: rgba(0, 0, 0, 0.6); display: none; font-size: 0.95rem; }
 
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 2rem;
-      border-left: 4px solid var(--neon-green);
-      padding-left: 1rem;
-    }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .modal-container { width: 90%; max-width: 800px; max-height: 85vh; background: #000; border: 1px solid var(--outline-white); display: flex; flex-direction: column; padding: 2rem; position: relative; }
 
-    /* Core Objectives List Container */
-    .objectives-card {
-      background: var(--card-bg);
-      border: 1px solid var(--outline-white);
-      padding: 2.5rem;
-      transition: all 0.3s ease;
-    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--outline-dim); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+    .modal-header h2 { text-transform: uppercase; color: var(--neon-green); }
+    .close-modal { background: none; border: none; color: #FFF; font-size: 1.8rem; cursor: pointer; }
+    .modal-body { overflow-y: auto; color: #CCC; font-size: 0.92rem; }
+    .modal-body h3 { color: #FFF; margin: 1.5rem 0 0.5rem; border-left: 2px solid var(--neon-green); padding-left: 8px; }
 
-    .objectives-card:hover {
-      border-color: var(--neon-green);
-      box-shadow: 0 0 25px rgba(0, 255, 102, 0.15);
-    }
-
-    .objectives-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .objectives-list li {
-      position: relative;
-      padding-left: 2rem;
-      font-size: 1.05rem;
-      color: #EEE;
-    }
-
-    .objectives-list li::before {
-      content: "➔";
-      position: absolute;
-      left: 0;
-      color: var(--neon-green);
-      font-weight: bold;
-    }
-
-    .events-filter {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: transparent;
-      border: 1px solid var(--outline-dim);
-      color: #AAA;
-      padding: 6px 16px;
-      font-family: var(--font-heading);
-      cursor: pointer;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      transition: all 0.2s;
-    }
-
-    .filter-btn.active, .filter-btn:hover {
-      border-color: var(--neon-green);
-      color: var(--neon-green);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .event-card {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--outline-white);
-      background: var(--card-bg);
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .event-card:hover {
-      border-color: var(--neon-green);
-      box-shadow: 0 0 20px var(--neon-green-glow);
-    }
-
-    .event-img-wrapper {
-      height: 180px;
-      width: 100%;
-      position: relative;
-      background: #111;
-      border-bottom: 1px solid var(--outline-dim);
-      overflow: hidden;
-    }
-
-    .event-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(80%) contrast(120%);
-      transition: filter 0.3s ease;
-    }
-
-    .event-card:hover .event-img {
-      filter: grayscale(0%) contrast(100%);
-    }
-
-    .event-tag {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: #000;
-      border: 1px solid var(--neon-green);
-      color: var(--neon-green);
-      font-size: 0.75rem;
-      font-family: var(--font-heading);
-      padding: 2px 8px;
-      text-transform: uppercase;
-    }
-
-    .event-body {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .event-location {
-      color: var(--neon-green);
-      font-family: var(--font-heading);
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
-    }
-
-    .event-title {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-    }
-
-    .event-desc {
-      color: #AAA;
-      font-size: 0.88rem;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
-    }
-
-    .grid-board {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .board-card {
-      border: 1px solid var(--outline-white);
-      background: var(--card-bg);
-      text-align: center;
-      padding: 1.5rem 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .board-card:hover {
-      border-color: var(--neon-green);
-      transform: translateY(-4px);
-    }
-
-    .board-img-container {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 1.2rem;
-      border-radius: 50%;
-      border: 2px solid var(--neon-green);
-      overflow: hidden;
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .board-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .board-name {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      color: #FFF;
-      margin-bottom: 0.2rem;
-    }
-
-    .board-role {
-      color: var(--neon-green);
-      font-size: 0.78rem;
-      font-family: var(--font-heading);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-
-    .board-filename {
-      font-family: monospace;
-      font-size: 0.72rem;
-      color: #666;
-      word-break: break-all;
-    }
-
-    .interactive-box {
-      border: 1px solid var(--outline-white);
-      background: var(--card-bg);
-      padding: 2.5rem;
-      margin-top: 1rem;
-    }
-
-    .interactive-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .scenario-btn {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--outline-dim);
-      color: #FFF;
-      padding: 1rem;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: var(--font-body);
-    }
-
-    .scenario-btn:hover {
-      border-color: var(--neon-green);
-      background: rgba(0, 255, 102, 0.05);
-    }
-
-    #scenario-result {
-      margin-top: 1.5rem;
-      padding: 1rem;
-      border-left: 2px solid var(--neon-green);
-      background: rgba(0, 0, 0, 0.6);
-      display: none;
-      font-size: 0.95rem;
-    }
-
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-container {
-      width: 90%;
-      max-width: 800px;
-      max-height: 85vh;
-      background: #000;
-      border: 1px solid var(--outline-white);
-      box-shadow: 0 0 30px rgba(0, 255, 102, 0.2);
-      display: flex;
-      flex-direction: column;
-      padding: 2rem;
-      position: relative;
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--outline-dim);
-      padding-bottom: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-header h2 {
-      font-family: var(--font-heading);
-      text-transform: uppercase;
-      color: var(--neon-green);
-    }
-
-    .close-modal {
-      background: none;
-      border: none;
-      color: #FFF;
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    .modal-body {
-      overflow-y: auto;
-      padding-right: 1rem;
-      color: #CCC;
-      font-size: 0.92rem;
-    }
-
-    .modal-body h3 {
-      color: #FFF;
-      margin: 1.5rem 0 0.5rem;
-      font-family: var(--font-heading);
-      border-left: 2px solid var(--neon-green);
-      padding-left: 8px;
-    }
-
-    .modal-body ul {
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    footer {
-      border-top: 1px solid var(--outline-dim);
-      padding: 3rem 8%;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #666;
-      background: #000;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      section { padding: 4rem 5% 2rem; }
-    }
+    footer { border-top: 1px solid var(--outline-dim); padding: 3rem 8%; text-align: center; font-size: 0.85rem; color: #666; background: #000; }
+    @media (max-width: 768px) { .nav-links { display: none; } section { padding: 4rem 5% 2rem; } }
   </style>
 </head>
 <body>
@@ -549,7 +110,7 @@
 
   <nav>
     <div class="nav-brand">
-      <img src="BSCC.image" alt="BSCC" class="brand-logo-img" onerror="this.style.display='none'">
+      <div class="brand-logo-img"></div>
       <span>BSCC</span>
     </div>
     <ul class="nav-links">
@@ -557,7 +118,6 @@
       <li><a href="#events">Showcase</a></li>
       <li><a href="#board">E-Board</a></li>
       <li><a href="#interactive">Practice</a></li>
-      <li><a id="open-config-nav">Config Names</a></li>
       <li><a id="open-constitution">Constitution</a></li>
     </ul>
   </nav>
@@ -565,7 +125,6 @@
   <section class="hero">
     <div class="badge">Rutgers Business School</div>
     <h1>Business Strategy & <br><span>Communications Club</span></h1>
-    <!-- Single-sentence condensed Mission Statement -->
     <p>BSCC exposes students to business communication, decision-making, and psychology to hone soft skills, analyze body language, refine speech, and build strategies for leaving impactful impressions that showcase true merits.</p>
     <div class="btn-group">
       <a href="#events" class="btn-solid">Event Showcase</a>
@@ -586,7 +145,7 @@
     </div>
   </section>
 
-  <!-- Event Showcase Section (All events held at RBS) -->
+  <!-- Event Showcase Section -->
   <section id="events">
     <h2 class="section-title">Event Showcase</h2>
     <p style="margin-bottom: 1.5rem; color: #AAA;">All BSCC events are held at <strong>Rutgers Business School (RBS)</strong>. Official event registration is released via our Instagram and GroupMe.</p>
@@ -599,10 +158,10 @@
     </div>
 
     <div class="grid-3">
-      <!-- Event 1: Lecture -->
+      <!-- Event 1 -->
       <div class="event-card" data-category="lecture">
         <div class="event-img-wrapper">
-          <img src="Event_BodyLanguage.image" alt="Lecture Event" class="event-img" onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80'">
+          <svg class="event-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111"/><text x="50%" y="50%" fill="#00FF66" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="14">LECTURE</text></svg>
           <span class="event-tag">Lecture + Q&A</span>
         </div>
         <div class="event-body">
@@ -613,10 +172,10 @@
         </div>
       </div>
 
-      <!-- Event 2: Communication Nights -->
+      <!-- Event 2 -->
       <div class="event-card" data-category="workshop">
         <div class="event-img-wrapper">
-          <img src="Event_CommunicationNight.image" alt="Communication Night" class="event-img" onerror="this.src='https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80'">
+          <svg class="event-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111"/><text x="50%" y="50%" fill="#00FF66" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="14">WORKSHOP</text></svg>
           <span class="event-tag">Practice Stations</span>
         </div>
         <div class="event-body">
@@ -627,10 +186,10 @@
         </div>
       </div>
 
-      <!-- Event 3: Game Show Night -->
+      <!-- Event 3 -->
       <div class="event-card" data-category="competition">
         <div class="event-img-wrapper">
-          <img src="Event_GameShow.image" alt="Game Show Night" class="event-img" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80'">
+          <svg class="event-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111"/><text x="50%" y="50%" fill="#00FF66" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="14">COMPETITION</text></svg>
           <span class="event-tag">Game Show</span>
         </div>
         <div class="event-body">
@@ -645,15 +204,49 @@
 
   <!-- Executive Board Section -->
   <section id="board">
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
-      <div>
-        <h2 class="section-title" style="margin-bottom: 0.5rem;">Executive Board</h2>
-        <p style="color: #888;">Filename format: <code>POSITIONNAME.First.LastName.image</code></p>
-      </div>
-      <button class="btn-outline" id="btn-config-board">Edit Officer Names</button>
-    </div>
+    <h2 class="section-title">Executive Board</h2>
     
-    <div class="grid-board" id="board-grid-container"></div>
+    <div class="grid-board">
+      <div class="board-card">
+        <div class="board-img-container">
+          <img src="President.First.Last.image" alt="President" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>PRESIDENT</text></svg>'">
+        </div>
+        <div class="board-name">President</div>
+        <div class="board-role">President</div>
+      </div>
+
+      <div class="board-card">
+        <div class="board-img-container">
+          <img src="VicePresident.First.Last.image" alt="Vice President" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>VICE PRES</text></svg>'">
+        </div>
+        <div class="board-name">Vice President</div>
+        <div class="board-role">Vice President</div>
+      </div>
+
+      <div class="board-card">
+        <div class="board-img-container">
+          <img src="Treasurer.First.Last.image" alt="Treasurer" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>TREASURER</text></svg>'">
+        </div>
+        <div class="board-name">Treasurer</div>
+        <div class="board-role">Treasurer</div>
+      </div>
+
+      <div class="board-card">
+        <div class="board-img-container">
+          <img src="Secretary.First.Last.image" alt="Secretary" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>SECRETARY</text></svg>'">
+        </div>
+        <div class="board-name">Secretary</div>
+        <div class="board-role">Secretary</div>
+      </div>
+
+      <div class="board-card">
+        <div class="board-img-container">
+          <img src="MarketingHead.First.Last.image" alt="Marketing Head" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>MARKETING</text></svg>'">
+        </div>
+        <div class="board-name">Marketing Head</div>
+        <div class="board-role">Marketing Head</div>
+      </div>
+    </div>
   </section>
 
   <!-- Practice Simulator -->
@@ -707,7 +300,7 @@
         <button class="close-modal" id="close-detail">&times;</button>
       </div>
       <div class="modal-body">
-        <div style="background: rgba(0,255,102,0.1); border: 1px solid var(--neon-green); padding: 10px 15px; margin-bottom: 1.2rem; color: var(--neon-green); font-family: var(--font-heading); font-size: 0.85rem;">
+        <div style="background: rgba(0,255,102,0.1); border: 1px solid var(--neon-green); padding: 10px 15px; margin-bottom: 1.2rem; color: var(--neon-green); font-size: 0.85rem;">
           📍 LOCATION: RUTGERS BUSINESS SCHOOL (RBS)
         </div>
         <p id="detail-description" style="color: #DDD; font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.5rem;"></p>
@@ -718,169 +311,64 @@
     </div>
   </div>
 
-  <!-- Officer Name Configurator Modal -->
-  <div class="modal-overlay" id="modal-config">
-    <div class="modal-container" style="max-width: 550px;">
-      <div class="modal-header">
-        <h2>Configure Officer Names</h2>
-        <button class="close-modal" id="close-config">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p style="font-size: 0.82rem; color: #AAA; margin-bottom: 1rem;">Set board member names to automatically update filenames (e.g. <code>President.First.Last.image</code>):</p>
-        <div id="config-inputs-container"></div>
-        <button class="btn-solid" onclick="saveBoardNames()" style="width: 100%; margin-top: 1rem;">Save & Update View</button>
-      </div>
-    </div>
-  </div>
-
   <footer>
     <p>&copy; Business Strategy & Communications Club (BSCC) • Rutgers Business School</p>
   </footer>
 
   <script>
-    /* Background Canvas Animation */
+    /* Lightweight Canvas Animation */
     const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
     window.addEventListener('resize', () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-    });
+    }, { passive: true });
 
-    const shapes = Array.from({ length: 15 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: Math.random() * 80 + 40,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      rot: Math.random() * Math.PI * 2,
-      vRot: (Math.random() - 0.5) * 0.01,
+    const shapes = Array.from({ length: 10 }, () => ({
+      x: Math.random() * width, y: Math.random() * height,
+      size: Math.random() * 60 + 30,
+      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+      rot: Math.random() * Math.PI * 2, vRot: (Math.random() - 0.5) * 0.008,
       sides: Math.floor(Math.random() * 3) + 3
     }));
 
-    function drawPolygon(x, y, radius, sides, rotate) {
-      ctx.beginPath();
-      for (let i = 0; i < sides; i++) {
-        const angle = rotate + (i * 2 * Math.PI / sides);
-        const px = x + radius * Math.cos(angle);
-        const py = y + radius * Math.sin(angle);
-        if (i === 0) ctx.moveTo(px, py);
-        else ctx.lineTo(px, py);
-      }
-      ctx.closePath();
-    }
-
     function animateBg() {
-      ctx.clearRect(0, 0, width, height);
-      shapes.forEach(shape => {
-        shape.x += shape.vx;
-        shape.y += shape.vy;
-        shape.rot += shape.vRot;
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, width, height);
+      ctx.strokeStyle = 'rgba(0, 255, 102, 0.12)';
+      ctx.lineWidth = 1;
 
+      shapes.forEach(shape => {
+        shape.x += shape.vx; shape.y += shape.vy; shape.rot += shape.vRot;
         if (shape.x < -100) shape.x = width + 100;
         if (shape.x > width + 100) shape.x = -100;
         if (shape.y < -100) shape.y = height + 100;
         if (shape.y > height + 100) shape.y = -100;
 
-        ctx.strokeStyle = 'rgba(0, 255, 102, 0.15)';
-        ctx.lineWidth = 1.5;
-        drawPolygon(shape.x, shape.y, shape.size, shape.sides, shape.rot);
+        ctx.beginPath();
+        for (let i = 0; i < shape.sides; i++) {
+          const angle = shape.rot + (i * 2 * Math.PI / shape.sides);
+          const px = shape.x + shape.size * Math.cos(angle);
+          const py = shape.y + shape.size * Math.sin(angle);
+          if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.closePath();
         ctx.stroke();
       });
       requestAnimationFrame(animateBg);
     }
     animateBg();
 
-    /* Board Dynamic Naming Data */
-    const boardPositions = [
-      { key: 'President', role: 'President' },
-      { key: 'VicePresident', role: 'Vice President' },
-      { key: 'Treasurer', role: 'Treasurer' },
-      { key: 'Secretary', role: 'Secretary' },
-      { key: 'MarketingHead', role: 'Marketing Head' }
-    ];
-
-    let boardData = JSON.parse(localStorage.getItem('bscc_board_names')) || {
-      President: { first: 'First', last: 'Last' },
-      VicePresident: { first: 'First', last: 'Last' },
-      Treasurer: { first: 'First', last: 'Last' },
-      Secretary: { first: 'First', last: 'Last' },
-      MarketingHead: { first: 'First', last: 'Last' }
-    };
-
-    function renderBoardCards() {
-      const container = document.getElementById('board-grid-container');
-      container.innerHTML = '';
-
-      boardPositions.forEach(pos => {
-        const info = boardData[pos.key] || { first: 'First', last: 'Last' };
-        const filename = `${pos.key}.${info.first}.${info.last}.image`;
-
-        const card = document.createElement('div');
-        card.className = 'board-card';
-        card.innerHTML = `
-          <div class="board-img-container">
-            <img src="${filename}" alt="${info.first} ${info.last}" class="board-img" onerror="this.src='https://via.placeholder.com/150/000000/00FF66?text=${pos.key}'">
-          </div>
-          <div class="board-name">${info.first} ${info.last}</div>
-          <div class="board-role">${pos.role}</div>
-          <div class="board-filename">${filename}</div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function renderConfigInputs() {
-      const container = document.getElementById('config-inputs-container');
-      container.innerHTML = '';
-
-      boardPositions.forEach(pos => {
-        const info = boardData[pos.key] || { first: '', last: '' };
-        const div = document.createElement('div');
-        div.style.display = 'grid';
-        div.style.gridTemplateColumns = '1fr 1fr';
-        div.style.gap = '10px';
-        div.style.marginBottom = '10px';
-        div.innerHTML = `
-          <div>
-            <label style="font-size:0.75rem; color:var(--neon-green); text-transform:uppercase;">${pos.role} First</label>
-            <input type="text" id="input-${pos.key}-first" value="${info.first}" style="width:100%; padding:8px; background:#111; border:1px solid #FFF; color:#FFF;">
-          </div>
-          <div>
-            <label style="font-size:0.75rem; color:var(--neon-green); text-transform:uppercase;">${pos.role} Last</label>
-            <input type="text" id="input-${pos.key}-last" value="${info.last}" style="width:100%; padding:8px; background:#111; border:1px solid #FFF; color:#FFF;">
-          </div>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    function saveBoardNames() {
-      boardPositions.forEach(pos => {
-        const first = document.getElementById(`input-${pos.key}-first`).value.trim() || 'First';
-        const last = document.getElementById(`input-${pos.key}-last`).value.trim() || 'Last';
-        boardData[pos.key] = { first, last };
-      });
-      localStorage.setItem('bscc_board_names', JSON.stringify(boardData));
-      renderBoardCards();
-      document.getElementById('modal-config').classList.remove('active');
-    }
-
-    /* Modal Controls */
+    /* Modals & Interactions */
     const constModal = document.getElementById('modal-constitution');
     const detailModal = document.getElementById('modal-event-detail');
-    const configModal = document.getElementById('modal-config');
 
     document.getElementById('open-constitution').onclick = () => constModal.classList.add('active');
     document.getElementById('btn-view-const').onclick = () => constModal.classList.add('active');
     document.getElementById('close-const-btn').onclick = () => constModal.classList.remove('active');
-
-    document.getElementById('open-config-nav').onclick = () => { renderConfigInputs(); configModal.classList.add('active'); };
-    document.getElementById('btn-config-board').onclick = () => { renderConfigInputs(); configModal.classList.add('active'); };
-    document.getElementById('close-config').onclick = () => configModal.classList.remove('active');
-
     document.getElementById('close-detail').onclick = () => detailModal.classList.remove('active');
 
     function showEventDetails(title, description) {
@@ -889,7 +377,6 @@
       detailModal.classList.add('active');
     }
 
-    /* Interactive Simulator */
     function evalScenario(type) {
       const res = document.getElementById('scenario-result');
       res.style.display = 'block';
@@ -902,7 +389,7 @@
       }
     }
 
-    /* Filtering logic */
+    /* Event Category Filtering */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const eventCards = document.querySelectorAll('.event-card');
 
@@ -911,18 +398,11 @@
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filter = btn.dataset.filter;
-
         eventCards.forEach(card => {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
+          card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'flex' : 'none';
         });
       });
     });
-
-    renderBoardCards();
   </script>
 </body>
 </html>
