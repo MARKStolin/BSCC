@@ -74,14 +74,14 @@
     .event-title { font-size: 1.2rem; margin-bottom: 0.8rem; text-transform: uppercase; }
     .event-desc { color: #AAA; font-size: 0.88rem; margin-bottom: 1.5rem; flex-grow: 1; }
 
-    .grid-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
-    .board-card { border: 1px solid var(--outline-white); background: var(--card-bg); text-align: center; padding: 2rem 1rem; transition: border-color 0.2s; }
+    .grid-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .board-card { border: 1px solid var(--outline-white); background: var(--card-bg); text-align: center; padding: 2rem 1.2rem; transition: border-color 0.2s; display: flex; flex-direction: column; align-items: center; }
     .board-card:hover { border-color: var(--neon-green); }
 
-    .board-img-container { width: 120px; height: 120px; margin: 0 auto 1.2rem; border-radius: 50%; border: 2px solid var(--neon-green); overflow: hidden; background: #111; }
+    .board-img-container { width: 120px; height: 120px; margin-bottom: 1.2rem; border-radius: 50%; border: 2px solid var(--neon-green); overflow: hidden; background: #111; }
     .board-img { width: 100%; height: 100%; object-fit: cover; }
-    .board-name { font-size: 1.1rem; text-transform: uppercase; color: #FFF; margin-bottom: 0.2rem; }
-    .board-role { color: var(--neon-green); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+    .board-title { font-size: 1.1rem; text-transform: uppercase; color: var(--neon-green); font-weight: 700; margin-bottom: 0.6rem; letter-spacing: 1px; }
+    .board-desc { color: #BBB; font-size: 0.85rem; line-height: 1.4; }
 
     .interactive-box { border: 1px solid var(--outline-white); background: var(--card-bg); padding: 2.5rem; margin-top: 1rem; }
     .interactive-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
@@ -211,40 +211,40 @@
         <div class="board-img-container">
           <img src="President.First.Last.image" alt="President" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>PRESIDENT</text></svg>'">
         </div>
-        <div class="board-name">President</div>
-        <div class="board-role">President</div>
+        <div class="board-title">President</div>
+        <div class="board-desc">Presides over all official BSCC meetings, oversees general management, leads executive strategy, and serves as official university liaison.</div>
       </div>
 
       <div class="board-card">
         <div class="board-img-container">
           <img src="VicePresident.First.Last.image" alt="Vice President" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>VICE PRES</text></svg>'">
         </div>
-        <div class="board-name">Vice President</div>
-        <div class="board-role">Vice President</div>
+        <div class="board-title">Vice President</div>
+        <div class="board-desc">Assists the President with operational leadership, manages internal operations, and assumes presidential duties whenever necessary.</div>
       </div>
 
       <div class="board-card">
         <div class="board-img-container">
           <img src="Treasurer.First.Last.image" alt="Treasurer" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>TREASURER</text></svg>'">
         </div>
-        <div class="board-name">Treasurer</div>
-        <div class="board-role">Treasurer</div>
+        <div class="board-title">Treasurer</div>
+        <div class="board-desc">Manages financial records, processes budget requests, maintains accounts, and tracks allocations for club workshops and competitions.</div>
       </div>
 
       <div class="board-card">
         <div class="board-img-container">
           <img src="Secretary.First.Last.image" alt="Secretary" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>SECRETARY</text></svg>'">
         </div>
-        <div class="board-name">Secretary</div>
-        <div class="board-role">Secretary</div>
+        <div class="board-title">Secretary</div>
+        <div class="board-desc">Maintains meeting minutes, manages official communications, tracks attendance logs, and organizes administrative records.</div>
       </div>
 
       <div class="board-card">
         <div class="board-img-container">
           <img src="MarketingHead.First.Last.image" alt="Marketing Head" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>MARKETING</text></svg>'">
         </div>
-        <div class="board-name">Marketing Head</div>
-        <div class="board-role">Marketing Head</div>
+        <div class="board-title">Marketing Head</div>
+        <div class="board-desc">Leads public relations, social media outreach, promotional design, and event communication campaigns across campus channels.</div>
       </div>
     </div>
   </section>
@@ -274,20 +274,20 @@
         <button class="close-modal" id="close-const-btn">&times;</button>
       </div>
       <div class="modal-body">
-        <h3>ARTICLE I — NAME</h3>
+        <h3>Organization Name</h3>
         <p>The name of the organization shall be the “Business Strategy & Communications Club” (BSCC).</p>
 
-        <h3>ARTICLE II — PURPOSE & PROGRAMMING</h3>
+        <h3>Purpose & Programming</h3>
         <p>The purpose of the organization shall be to expose students to business communication, decision-making, and psychology, and to sharpen their soft skills. Many students do not have the communication skills that come naturally to others. This club hopes to train and hone those skills to teach students how to read and analyze body language, train their speech to communicate better, discuss the importance of business communication, and come up with strategies that allow them to leave impactful impressions that showcase their skills and merits.</p>
 
-        <h3>ARTICLE III — MEMBERSHIP</h3>
+        <h3>Membership Guidelines</h3>
         <p>Membership shall be open to all Rutgers University students complying with university guidelines and non-discrimination laws.</p>
 
-        <h3>ARTICLE IV — EXECUTIVE BOARD OFFICERS</h3>
+        <h3>Executive Board Leadership</h3>
         <p>The officers of the Executive Board shall be President, Vice-President, Treasurer, Secretary, and Marketing Head.</p>
 
-        <h3>ARTICLE V — ELECTIONS</h3>
-        <p>Elections take place by Spring Break by secret ballot. Active membership/voting rights require attendance at a minimum of 3 BSCC events/meetings prior to elections.</p>
+        <h3>Elections Process</h3>
+        <p>Elections take place by Spring Break by secret ballot. Active membership and voting rights require attendance at a minimum of 3 BSCC events or meetings prior to elections.</p>
       </div>
     </div>
   </div>
