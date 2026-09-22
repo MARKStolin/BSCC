@@ -10,7 +10,7 @@
   <style>
     :root {
       --bg-black: #000000;
-      --card-bg: rgba(0, 0, 0, 0.7);
+      --card-bg: rgba(10, 10, 10, 0.85);
       --outline-white: rgba(255, 255, 255, 0.85);
       --outline-dim: rgba(255, 255, 255, 0.2);
       --neon-green: #00FF66;
@@ -20,26 +20,29 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body { background-color: var(--bg-black); color: #FFF; font-family: var(--font-body); overflow-x: hidden; line-height: 1.6; }
 
     #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
 
+    /* Nav bar spacing fix */
     nav {
       position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between;
-      align-items: center; padding: 1.2rem 5%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px);
+      align-items: center; padding: 1rem 5%; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--outline-dim); z-index: 1000;
     }
 
-    .nav-brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-weight: 800; font-size: 1.2rem; letter-spacing: 1px; }
+    .nav-brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; white-space: nowrap; }
     .brand-logo-img { width: 36px; height: 36px; border-radius: 4px; border: 1px solid var(--neon-green); object-fit: cover; background: #111; }
 
     .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
-    .nav-links a { color: #FFF; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading); font-weight: 700; transition: color 0.2s; cursor: pointer; }
+    .nav-links a { color: #FFF; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading); font-weight: 700; transition: color 0.2s; cursor: pointer; white-space: nowrap; }
     .nav-links a:hover { color: var(--neon-green); }
 
-    section { padding: 5rem 6% 3rem; max-width: 1400px; margin: 0 auto; }
+    section { padding: 4.5rem 6% 2.5rem; max-width: 1300px; margin: 0 auto; }
 
-    .hero { min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-top: 6rem; }
+    /* Hero layout balance */
+    .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-top: 6rem; }
     
     .badge-box {
       display: inline-block;
@@ -47,72 +50,68 @@
       color: var(--neon-green);
       padding: 6px 14px;
       font-family: var(--font-heading);
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       border-radius: 2px;
+      white-space: nowrap;
     }
 
     .hero h1 { 
       font-family: var(--font-heading); 
-      font-size: clamp(2.5rem, 6vw, 5rem); 
-      line-height: 1.05; 
+      font-size: clamp(2.2rem, 5vw, 4.2rem); 
+      line-height: 1.1; 
       text-transform: uppercase; 
-      margin-bottom: 1.8rem; 
+      margin-bottom: 1.5rem; 
       font-weight: 900; 
-      letter-spacing: -1px;
+      letter-spacing: -0.5px;
+      text-wrap: balance;
     }
-    .hero h1 span { color: var(--neon-green); }
-    .hero p { font-size: clamp(1rem, 1.5vw, 1.15rem); max-width: 820px; color: #DDD; margin-bottom: 2.5rem; font-family: var(--font-body); line-height: 1.6; }
+    .hero h1 span { color: var(--neon-green); display: inline-block; }
+    .hero p { font-size: clamp(0.95rem, 1.3vw, 1.1rem); max-width: 800px; color: #DDD; margin-bottom: 2rem; font-family: var(--font-body); line-height: 1.6; text-wrap: pretty; }
 
-    .btn-group { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-    .btn-solid { border: 1px solid var(--neon-green); background: var(--neon-green); color: #000; padding: 14px 32px; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; font-weight: 800; cursor: pointer; transition: all 0.2s; text-decoration: none; font-size: 0.9rem; }
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-solid { border: 1px solid var(--neon-green); background: var(--neon-green); color: #000; padding: 12px 28px; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; font-weight: 800; cursor: pointer; transition: all 0.2s; text-decoration: none; font-size: 0.85rem; white-space: nowrap; }
     .btn-solid:hover { box-shadow: 0 0 20px var(--neon-green); }
 
-    .btn-outline { border: 1px solid var(--outline-white); background: transparent; color: #FFF; padding: 14px 32px; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; font-weight: 800; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; font-size: 0.9rem; }
+    .btn-outline { border: 1px solid var(--outline-white); background: transparent; color: #FFF; padding: 12px 28px; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; font-weight: 800; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; font-size: 0.85rem; white-space: nowrap; justify-content: center; }
     .btn-outline:hover { border-color: var(--neon-green); color: var(--neon-green); box-shadow: 0 0 15px var(--neon-green-glow); }
 
-    /* CORE OBJECTIVES SECTION */
+    /* CORE OBJECTIVES SECTION - RESTORED ORIGINAL CARDS */
     .section-title { 
       font-family: var(--font-heading); 
-      font-size: 2.2rem; 
+      font-size: 2rem; 
       font-weight: 900;
       text-transform: uppercase; 
       letter-spacing: 1.5px; 
-      margin-bottom: 2rem; 
+      margin-bottom: 1.8rem; 
       border-left: 5px solid var(--neon-green); 
-      padding-left: 1.2rem; 
+      padding-left: 1rem; 
     }
 
-    /* Restored Original Box & Flex/Grid Flow */
     .objectives-card { 
       background: var(--card-bg); 
       border: 1px solid var(--outline-white); 
-      padding: 3.5rem 3rem; 
+      padding: 2.5rem 2rem; 
       transition: border-color 0.3s; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     .objectives-card:hover { border-color: var(--neon-green); }
-    
-    .objectives-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-    }
 
-    .objectives-row-top { 
-      display: grid; 
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 2rem; 
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.8rem 2.5rem;
     }
 
     .obj-item { 
       display: flex; 
       align-items: flex-start; 
       gap: 14px; 
-      font-size: 1.05rem; 
-      color: #FFF; 
+      font-size: 1rem; 
+      color: #EEE; 
       font-family: var(--font-body); 
       line-height: 1.5;
     }
@@ -123,58 +122,67 @@
       font-size: 1.2rem; 
       line-height: 1; 
       flex-shrink: 0; 
-      margin-top: 3px;
+      margin-top: 2px;
     }
 
+    /* EVENTS & IMAGES RESTORED */
     .events-filter { display: flex; gap: 10px; margin-bottom: 2rem; flex-wrap: wrap; }
-    .filter-btn { background: transparent; border: 1px solid var(--outline-dim); color: #AAA; padding: 6px 16px; font-family: var(--font-heading); cursor: pointer; text-transform: uppercase; font-size: 0.85rem; font-weight: 700; }
+    .filter-btn { background: transparent; border: 1px solid var(--outline-dim); color: #AAA; padding: 6px 16px; font-family: var(--font-heading); cursor: pointer; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; white-space: nowrap; }
     .filter-btn.active, .filter-btn:hover { border-color: var(--neon-green); color: var(--neon-green); }
 
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; }
     .event-card { display: flex; flex-direction: column; border: 1px solid var(--outline-white); background: var(--card-bg); overflow: hidden; transition: all 0.2s; }
     .event-card:hover { border-color: var(--neon-green); box-shadow: 0 0 20px var(--neon-green-glow); }
 
-    .event-img-wrapper { height: 180px; width: 100%; position: relative; background: #111; border-bottom: 1px solid var(--outline-dim); }
-    .event-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%); transition: filter 0.2s; }
+    .event-img-wrapper { height: 190px; width: 100%; position: relative; background: #111; border-bottom: 1px solid var(--outline-dim); }
+    .event-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(40%); transition: filter 0.2s; }
     .event-card:hover .event-img { filter: grayscale(0%); }
 
-    .event-tag { position: absolute; top: 12px; right: 12px; background: #000; border: 1px solid var(--neon-green); color: var(--neon-green); font-size: 0.75rem; font-family: var(--font-heading); font-weight: 700; padding: 2px 8px; text-transform: uppercase; }
+    .event-tag { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.85); border: 1px solid var(--neon-green); color: var(--neon-green); font-size: 0.7rem; font-family: var(--font-heading); font-weight: 700; padding: 3px 8px; text-transform: uppercase; white-space: nowrap; }
     .event-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-    .event-title { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase; }
-    .event-desc { color: #AAA; font-size: 0.88rem; margin-bottom: 1.5rem; flex-grow: 1; }
+    .event-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; margin-bottom: 0.6rem; text-transform: uppercase; text-wrap: balance; }
+    .event-desc { color: #AAA; font-size: 0.88rem; margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.5; }
 
-    .grid-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-    .board-card { border: 1px solid var(--outline-white); background: var(--card-bg); text-align: center; padding: 2rem 1.2rem; transition: border-color 0.2s; display: flex; flex-direction: column; align-items: center; }
+    /* EXECUTIVE BOARD */
+    .grid-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.5rem; }
+    .board-card { border: 1px solid var(--outline-white); background: var(--card-bg); text-align: center; padding: 2rem 1rem; transition: border-color 0.2s; display: flex; flex-direction: column; align-items: center; }
     .board-card:hover { border-color: var(--neon-green); }
 
-    .board-img-container { width: 120px; height: 120px; margin-bottom: 1.2rem; border-radius: 50%; border: 2px solid var(--neon-green); overflow: hidden; background: #111; }
+    .board-img-container { width: 110px; height: 110px; margin-bottom: 1rem; border-radius: 50%; border: 2px solid var(--neon-green); overflow: hidden; background: #111; flex-shrink: 0; }
     .board-img { width: 100%; height: 100%; object-fit: cover; }
-    .board-title { font-family: var(--font-heading); font-size: 1.1rem; text-transform: uppercase; color: var(--neon-green); font-weight: 800; margin-bottom: 0.6rem; letter-spacing: 1px; }
-    .board-desc { color: #BBB; font-size: 0.85rem; line-height: 1.4; }
+    .board-title { font-family: var(--font-heading); font-size: 1rem; text-transform: uppercase; color: var(--neon-green); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 0.5px; white-space: nowrap; }
+    .board-desc { color: #BBB; font-size: 0.82rem; line-height: 1.4; }
 
-    .interactive-box { border: 1px solid var(--outline-white); background: var(--card-bg); padding: 2.5rem; margin-top: 1rem; }
-    .interactive-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-    .scenario-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--outline-dim); color: #FFF; padding: 1rem; text-align: left; cursor: pointer; transition: background 0.2s; font-family: var(--font-body); }
+    .interactive-box { border: 1px solid var(--outline-white); background: var(--card-bg); padding: 2rem; margin-top: 1rem; }
+    .interactive-options { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.2rem; }
+    .scenario-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--outline-dim); color: #FFF; padding: 0.9rem 1.2rem; text-align: left; cursor: pointer; transition: background 0.2s; font-family: var(--font-body); font-size: 0.9rem; line-height: 1.4; }
     .scenario-btn:hover { border-color: var(--neon-green); background: rgba(0, 255, 102, 0.05); }
 
-    #scenario-result { margin-top: 1.5rem; padding: 1rem; border-left: 2px solid var(--neon-green); background: rgba(0, 0, 0, 0.6); display: none; font-size: 0.95rem; }
+    #scenario-result { margin-top: 1.2rem; padding: 1rem; border-left: 3px solid var(--neon-green); background: rgba(0, 0, 0, 0.6); display: none; font-size: 0.9rem; }
 
+    /* MODAL */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .modal-overlay.active { opacity: 1; pointer-events: all; }
-    .modal-container { width: 90%; max-width: 800px; max-height: 85vh; background: #000; border: 1px solid var(--outline-white); display: flex; flex-direction: column; padding: 2rem; position: relative; }
+    .modal-container { width: 90%; max-width: 750px; max-height: 85vh; background: #000; border: 1px solid var(--outline-white); display: flex; flex-direction: column; padding: 2rem; position: relative; }
 
-    .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--outline-dim); padding-bottom: 1rem; margin-bottom: 1.5rem; }
-    .modal-header h2 { font-family: var(--font-heading); font-weight: 800; text-transform: uppercase; color: var(--neon-green); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--outline-dim); padding-bottom: 1rem; margin-bottom: 1.2rem; }
+    .modal-header h2 { font-family: var(--font-heading); font-weight: 800; text-transform: uppercase; color: var(--neon-green); font-size: 1.3rem; }
     .close-modal { background: none; border: none; color: #FFF; font-size: 1.8rem; cursor: pointer; }
-    .modal-body { overflow-y: auto; color: #CCC; font-size: 0.92rem; }
-    .modal-body h3 { font-family: var(--font-heading); font-weight: 800; color: #FFF; margin: 1.5rem 0 0.5rem; border-left: 2px solid var(--neon-green); padding-left: 8px; }
+    .modal-body { overflow-y: auto; color: #CCC; font-size: 0.9rem; line-height: 1.6; }
+    .modal-body h3 { font-family: var(--font-heading); font-weight: 800; color: #FFF; margin: 1.2rem 0 0.4rem; border-left: 2px solid var(--neon-green); padding-left: 8px; font-size: 1rem; }
 
-    footer { border-top: 1px solid var(--outline-dim); padding: 3rem 8%; text-align: center; font-size: 0.85rem; color: #666; background: #000; }
+    footer { border-top: 1px solid var(--outline-dim); padding: 2.5rem 5%; text-align: center; font-size: 0.8rem; color: #666; background: #000; }
     
-    @media (max-width: 900px) {
-      .objectives-row-top { grid-template-columns: 1fr; }
+    /* Responsive breakpoints preventing text squeezing */
+    @media (max-width: 850px) {
+      .objectives-grid { grid-template-columns: 1fr; gap: 1.2rem; }
     }
-    @media (max-width: 768px) { .nav-links { display: none; } section { padding: 4rem 5% 2rem; } }
+    @media (max-width: 768px) { 
+      .nav-links { display: none; } 
+      section { padding: 3.5rem 5% 2rem; } 
+      .hero h1 { font-size: 2.3rem; }
+      .objectives-card { padding: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -209,24 +217,22 @@
   <section id="about">
     <h2 class="section-title">Core Objectives</h2>
     <div class="objectives-card">
-      <div class="objectives-container">
-        <div class="objectives-row-top">
-          <div class="obj-item">
-            <span class="obj-arrow">➔</span>
-            <span>Read and analyze body language</span>
-          </div>
-          <div class="obj-item">
-            <span class="obj-arrow">➔</span>
-            <span>Train speech to communicate better</span>
-          </div>
-          <div class="obj-item">
-            <span class="obj-arrow">➔</span>
-            <span>Discuss the importance of business communication</span>
-          </div>
+      <div class="objectives-grid">
+        <div class="obj-item">
+          <span class="obj-arrow">➔</span>
+          <span>Read and analyze non-verbal body language</span>
         </div>
         <div class="obj-item">
           <span class="obj-arrow">➔</span>
-          <span>Come up with strategies that allow students to leave impactful impressions that showcase their skills and merits</span>
+          <span>Train speech and delivery for clear communication</span>
+        </div>
+        <div class="obj-item">
+          <span class="obj-arrow">➔</span>
+          <span>Explore strategic business communication & psychology</span>
+        </div>
+        <div class="obj-item">
+          <span class="obj-arrow">➔</span>
+          <span>Develop strategies to leave high-impact, memorable impressions</span>
         </div>
       </div>
     </div>
@@ -235,7 +241,7 @@
   <!-- Event Showcase Section -->
   <section id="events">
     <h2 class="section-title">Event Showcase</h2>
-    <p style="margin-bottom: 1.5rem; color: #AAA;">Official event registration is released via our Instagram and GroupMe.</p>
+    <p style="margin-bottom: 1.5rem; color: #AAA; font-size: 0.9rem;">Official event registration is released via our Instagram and GroupMe.</p>
 
     <div class="events-filter">
       <button class="filter-btn active" data-filter="all">All Events</button>
@@ -247,7 +253,7 @@
     <div class="grid-3">
       <div class="event-card" data-category="lecture">
         <div class="event-img-wrapper">
-          <svg class="event-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111"/><text x="50%" y="50%" fill="#00FF66" dominant-baseline="middle" text-anchor="middle" font-family="'Montserrat', sans-serif" font-weight="800" font-size="14">LECTURE</text></svg>
+          <img src="event1.png" alt="Lecture Event" class="event-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat, sans-serif\' font-weight=\'800\' font-size=\'14\'>LECTURE EVENT</text></svg>';">
           <span class="event-tag">Lecture + Q&A</span>
         </div>
         <div class="event-body">
@@ -259,7 +265,7 @@
 
       <div class="event-card" data-category="workshop">
         <div class="event-img-wrapper">
-          <svg class="event-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111"/><text x="50%" y="50%" fill="#00FF66" dominant-baseline="middle" text-anchor="middle" font-family="'Montserrat', sans-serif" font-weight="800" font-size="14">WORKSHOP</text></svg>
+          <img src="event2.png" alt="Workshop Event" class="event-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat, sans-serif\' font-weight=\'800\' font-size=\'14\'>WORKSHOP EVENT</text></svg>';">
           <span class="event-tag">Practice Stations</span>
         </div>
         <div class="event-body">
@@ -271,12 +277,12 @@
 
       <div class="event-card" data-category="competition">
         <div class="event-img-wrapper">
-          <svg class="event-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111"/><text x="50%" y="50%" fill="#00FF66" dominant-baseline="middle" text-anchor="middle" font-family="'Montserrat', sans-serif" font-weight="800" font-size="14">COMPETITION</text></svg>
+          <img src="event3.png" alt="Competition Event" class="event-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat, sans-serif\' font-weight=\'800\' font-size=\'14\'>COMPETITION</text></svg>';">
           <span class="event-tag">Game Show</span>
         </div>
         <div class="event-body">
-          <h3 class="event-title">“What Would YOU Do?” Game Show Night</h3>
-          <p class="event-desc">Family Feud/Jeopardy style prompt competition. Teams of two respond to scenarios quickly and effectively to win prizes.</p>
+          <h3 class="event-title">“What Would YOU Do?” Game Show</h3>
+          <p class="event-desc">Family Feud/Jeopardy style prompt competition. Teams respond to scenarios quickly and effectively to win prizes.</p>
           <button class="btn-outline" onclick="showEventDetails('“What Would YOU Do?” Game Show Night', 'A Family Feud / Jeopardy-style game show night. Teams of two are given live business scenarios and prompt challenges. The side coming up with the most correct and effective response the quickest earns points to win prizes like notebooks, sticky pads, and club gear.')">Event Details</button>
         </div>
       </div>
@@ -290,42 +296,42 @@
     <div class="grid-board">
       <div class="board-card">
         <div class="board-img-container">
-          <img src="President.First.Last.image" alt="President" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>PRESIDENT</text></svg>'">
+          <img src="President.First.Last.png" alt="President" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>PRESIDENT</text></svg>';">
         </div>
         <div class="board-title">President</div>
-        <div class="board-desc">Presides over all official BSCC meetings, oversees general management, leads executive strategy, and serves as official university liaison.</div>
+        <div class="board-desc">Presides over all official meetings, leads strategy, and serves as main university liaison.</div>
       </div>
 
       <div class="board-card">
         <div class="board-img-container">
-          <img src="VicePresident.First.Last.image" alt="Vice President" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>VICE PRES</text></svg>'">
+          <img src="VicePresident.First.Last.png" alt="Vice President" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>VICE PRES</text></svg>';">
         </div>
         <div class="board-title">Vice President</div>
-        <div class="board-desc">Assists the President with operational leadership, manages internal operations, and assumes presidential duties whenever necessary.</div>
+        <div class="board-desc">Assists with operational leadership, manages internal operations, and supports presidency.</div>
       </div>
 
       <div class="board-card">
         <div class="board-img-container">
-          <img src="Treasurer.First.Last.image" alt="Treasurer" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>TREASURER</text></svg>'">
+          <img src="Treasurer.First.Last.png" alt="Treasurer" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>TREASURER</text></svg>';">
         </div>
         <div class="board-title">Treasurer</div>
-        <div class="board-desc">Manages financial records, processes budget requests, maintains accounts, and tracks allocations for club workshops and competitions.</div>
+        <div class="board-desc">Manages financial records, processes budget requests, and tracks allocations for events.</div>
       </div>
 
       <div class="board-card">
         <div class="board-img-container">
-          <img src="Secretary.First.Last.image" alt="Secretary" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>SECRETARY</text></svg>'">
+          <img src="Secretary.First.Last.png" alt="Secretary" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>SECRETARY</text></svg>';">
         </div>
         <div class="board-title">Secretary</div>
-        <div class="board-desc">Maintains meeting minutes, manages official communications, tracks attendance logs, and organizes administrative records.</div>
+        <div class="board-desc">Maintains meeting minutes, manages official communications, and tracks attendance logs.</div>
       </div>
 
       <div class="board-card">
         <div class="board-img-container">
-          <img src="MarketingHead.First.Last.image" alt="Marketing Head" class="board-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>MARKETING</text></svg>'">
+          <img src="MarketingHead.First.Last.png" alt="Marketing Head" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>MARKETING</text></svg>';">
         </div>
         <div class="board-title">Marketing Head</div>
-        <div class="board-desc">Leads public relations, social media outreach, promotional design, and event communication campaigns across campus channels.</div>
+        <div class="board-desc">Leads public relations, social media outreach, and promotional campaign design.</div>
       </div>
     </div>
   </section>
@@ -334,8 +340,8 @@
   <section id="interactive">
     <h2 class="section-title">Body Language Practice</h2>
     <div class="interactive-box">
-      <h3>Scenario: Reading Non-Verbal Feedback</h3>
-      <p style="color: #AAA; margin-top: 5px;">During a deal station, your counterparty crosses their arms and leans back. How do you pivot?</p>
+      <h3 style="font-family: var(--font-heading); text-transform: uppercase; font-size: 1.1rem; color: #FFF;">Scenario: Reading Non-Verbal Feedback</h3>
+      <p style="color: #AAA; margin-top: 5px; font-size: 0.9rem;">During a deal station, your counterparty crosses their arms and leans back. How do you pivot?</p>
       
       <div class="interactive-options">
         <button class="scenario-btn" onclick="evalScenario('ask')">A) Hand them a document or ask an open question to unlock closed body language.</button>
@@ -375,13 +381,13 @@
 
   <!-- Event Details Modal -->
   <div class="modal-overlay" id="modal-event-detail">
-    <div class="modal-container" style="max-width: 600px;">
+    <div class="modal-container" style="max-width: 550px;">
       <div class="modal-header">
         <h2 id="detail-title">Event Overview</h2>
         <button class="close-modal" id="close-detail">&times;</button>
       </div>
       <div class="modal-body">
-        <p id="detail-description" style="color: #DDD; font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.5rem;"></p>
+        <p id="detail-description" style="color: #DDD; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;"></p>
         <div style="border-top: 1px solid var(--outline-dim); padding-top: 1rem; color: #AAA; font-size: 0.85rem;">
           💡 <em>Registration and attendance updates are published directly on our official <strong>Instagram</strong> and <strong>GroupMe</strong>.</em>
         </div>
@@ -405,7 +411,7 @@
       height = canvas.height = window.innerHeight;
     }, { passive: true });
 
-    const nodes = Array.from({ length: 35 }, () => ({
+    const nodes = Array.from({ length: 30 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * 0.4,
@@ -448,8 +454,8 @@
         for (let j = i + 1; j < nodes.length; j++) {
           const nodeB = nodes[j];
           const dist = Math.hypot(nodeA.x - nodeB.x, nodeA.y - nodeB.y);
-          if (dist < 150) {
-            ctx.strokeStyle = `rgba(0, 255, 102, ${0.18 * (1 - dist / 150)})`;
+          if (dist < 140) {
+            ctx.strokeStyle = `rgba(0, 255, 102, ${0.15 * (1 - dist / 140)})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(nodeA.x, nodeA.y);
