@@ -31,7 +31,6 @@
       line-height: 1.6; 
     }
 
-    /* Animated soundwaves canvas overlay */
     #bg-canvas { 
       position: fixed; 
       top: 0; 
@@ -42,7 +41,6 @@
       pointer-events: none; 
     }
 
-    /* Fullscreen Logo Header Above Title Screen */
     .logo-hero-container {
       position: relative;
       width: 100vw;
@@ -75,7 +73,7 @@
       background: transparent !important;
       border: none !important;
       outline: none !important;
-      filter: none !important; /* Removes drop-shadow filter causing dark box artifact */
+      filter: drop-shadow(0 0 15px rgba(0, 255, 102, 0.3));
     }
 
     .scroll-hint {
@@ -96,7 +94,6 @@
       60% { transform: translateY(-4px); }
     }
 
-    /* Navbar */
     nav {
       position: fixed; 
       top: 0; 
@@ -150,7 +147,6 @@
       margin: 0 auto; 
     }
 
-    /* Title Screen BSCC Section */
     .hero-title-screen { 
       min-height: 85vh; 
       display: flex; 
@@ -240,7 +236,6 @@
       transform: translateY(-2px);
     }
 
-    /* Core Objectives Section */
     .section-title { 
       font-family: var(--font-heading); 
       font-size: 2.1rem; 
@@ -288,7 +283,6 @@
       margin-top: 3px;
     }
 
-    /* Filter & Event Showcase */
     .events-filter { display: flex; gap: 12px; margin-bottom: 2rem; flex-wrap: wrap; }
     .filter-btn { 
       background: rgba(255,255,255,0.03); 
@@ -351,7 +345,6 @@
     .event-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; margin-bottom: 0.6rem; text-transform: uppercase; }
     .event-desc { color: #A0AEC0; font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.55; }
 
-    /* Executive Board Grid */
     .grid-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.8rem; }
     .board-card { 
       border: 1px solid var(--outline-white); 
@@ -379,10 +372,10 @@
       box-shadow: 0 0 15px var(--neon-green-glow);
     }
     .board-img { width: 100%; height: 100%; object-fit: cover; }
-    .board-title { font-family: var(--font-heading); font-size: 1.05rem; text-transform: uppercase; color: var(--neon-green); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+    .board-title { font-family: var(--font-heading); font-size: 1.05rem; text-transform: uppercase; color: var(--neon-green); font-weight: 800; margin-bottom: 0.2rem; letter-spacing: 0.5px; }
+    .board-name { font-weight: 700; color: #FFFFFF; font-size: 1rem; margin-bottom: 0.5rem; }
     .board-desc { color: #CBD5E0; font-size: 0.85rem; line-height: 1.45; }
 
-    /* Interactive Practice Box */
     .interactive-box { 
       border: 1px solid var(--outline-white); 
       background: var(--card-bg); 
@@ -417,7 +410,6 @@
       border-radius: 0 6px 6px 0;
     }
 
-    /* Modal dialogs */
     .modal-overlay { 
       position: fixed; 
       top: 0; 
@@ -471,7 +463,6 @@
 </head>
 <body>
 
-  <!-- Animated Soundwaves Canvas -->
   <canvas id="bg-canvas"></canvas>
 
   <nav>
@@ -486,7 +477,6 @@
     </ul>
   </nav>
 
-<!-- Fullscreen Logo Header Above Title Screen -->
   <div class="logo-hero-container" id="top-logo-section">
     <div class="logo-scaler" id="logoScaler">
       <img src="logo.png" alt="BSCC Logo">
@@ -494,7 +484,6 @@
     <div class="scroll-hint">Scroll Down ↓</div>
   </div>
   
-  <!-- Title Screen BSCC Section -->
   <section class="hero-title-screen" id="bscc-title">
     <h1>Business Strategy & <br><span>Communications Club</span></h1>
     <p>BSCC exposes students to business communication, decision-making, and psychology to hone soft skills, analyze body language, refine speech, and build strategies for leaving impactful impressions that showcase true merits.</p>
@@ -578,54 +567,61 @@
     </div>
   </section>
 
-    <!-- Executive Board Section -->
-<section id="board" class="section">
-  <h2 class="section-title">Executive Board</h2>
-  <div class="grid-board" id="board-container">
-    <!-- Automated cards generate here -->
-  </div>
-</section>
-    
+  <!-- Executive Board Section -->
+  <section id="board">
+    <h2 class="section-title">Executive Board</h2>
     <div class="grid-board">
+      
+      <!-- President -->
       <div class="board-card">
         <div class="board-img-container">
-          <img src="President.First.Last.png" alt="President" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>PRESIDENT</text></svg>';">
+          <img src="President.Mark.Stolin.png" alt="Mark Stolin" class="board-img" onerror="this.onerror=null; this.src='logo.png';">
         </div>
         <div class="board-title">President</div>
+        <div class="board-name">Mark Stolin</div>
         <div class="board-desc">Presides over all official meetings, leads strategy, and serves as main liaison.</div>
       </div>
 
+      <!-- Vice President -->
       <div class="board-card">
         <div class="board-img-container">
-          <img src="VicePresident.First.Last.png" alt="Vice President" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>VICE PRES</text></svg>';">
+          <img src="VicePresident.Grace.Wu.png" alt="Grace Wu" class="board-img" onerror="this.onerror=null; this.src='logo.png';">
         </div>
         <div class="board-title">Vice President</div>
+        <div class="board-name">Grace Wu</div>
         <div class="board-desc">Assists with operational leadership, manages internal operations, and supports presidency.</div>
       </div>
 
+      <!-- Treasurer -->
       <div class="board-card">
         <div class="board-img-container">
-          <img src="Treasurer.First.Last.png" alt="Treasurer" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>TREASURER</text></svg>';">
+          <img src="Treasurer.Madeline.Morrissey.png" alt="Madeline Morrissey" class="board-img" onerror="this.onerror=null; this.src='logo.png';">
         </div>
         <div class="board-title">Treasurer</div>
+        <div class="board-name">Madeline Morrissey</div>
         <div class="board-desc">Manages financial records, processes budget requests, and tracks event allocations.</div>
       </div>
 
+      <!-- Secretary -->
       <div class="board-card">
         <div class="board-img-container">
-          <img src="Secretary.First.Last.png" alt="Secretary" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>SECRETARY</text></svg>';">
+          <img src="Secretary.Sarah.Connor.png" alt="Sarah Connor" class="board-img" onerror="this.onerror=null; this.src='logo.png';">
         </div>
         <div class="board-title">Secretary</div>
+        <div class="board-name">Sarah Connor</div>
         <div class="board-desc">Maintains meeting minutes, manages official communications, and tracks attendance logs.</div>
       </div>
 
+      <!-- Marketing Head -->
       <div class="board-card">
         <div class="board-img-container">
-          <img src="MarketingHead.First.Last.png" alt="Marketing Head" class="board-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111\'/><text x=\'50%\' y=\'50%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'10\'>MARKETING</text></svg>';">
+          <img src="MarketingHead.Alice.Jiang.png" alt="Alice Jiang" class="board-img" onerror="this.onerror=null; this.src='logo.png';">
         </div>
         <div class="board-title">Marketing Head</div>
+        <div class="board-name">Alice Jiang</div>
         <div class="board-desc">Leads public relations, social media outreach, and promotional campaign design.</div>
       </div>
+
     </div>
   </section>
 
@@ -690,7 +686,7 @@
   </footer>
 
   <script>
-    /* Scroll-driven scaling logic for the standalone top logo */
+    /* Scroll-driven scaling logic for logo */
     const logoScaler = document.getElementById('logoScaler');
     const titleSection = document.getElementById('bscc-title');
 
@@ -698,10 +694,7 @@
       const scrollY = window.scrollY;
       const titleOffset = titleSection.offsetTop;
 
-      // Calculate progress as user scrolls down toward the title screen
       const progress = Math.min(scrollY / titleOffset, 1);
-      
-      // Starts at scale 1 (full view), shrinks to 0.15 scale and fades as you reach title screen
       const scale = Math.max(1 - (progress * 0.85), 0.15);
       const opacity = Math.max(1 - (progress * 1.2), 0);
 
@@ -733,7 +726,6 @@
     function renderBackground() {
       ctx.clearRect(0, 0, width, height);
 
-      // Render flowing sine soundwaves
       ctx.strokeStyle = 'rgba(0, 255, 102, 0.09)';
       ctx.lineWidth = 1.5;
       for (let wave = 0; wave < 3; wave++) {
@@ -747,7 +739,6 @@
       }
       audioPhase += 0.016;
 
-      // Render connected particles
       for (let i = 0; i < nodes.length; i++) {
         const nodeA = nodes[i];
         nodeA.x += nodeA.vx;
@@ -779,22 +770,40 @@
     }
     renderBackground();
 
-    /* Modal dialog controls */
+    /* Modals & Interactivity */
     const constModal = document.getElementById('modal-constitution');
+    const openConstNav = document.getElementById('open-constitution');
+    const openConstBtn = document.getElementById('btn-view-const');
+    const closeConstBtn = document.getElementById('close-const-btn');
+
+    [openConstNav, openConstBtn].forEach(btn => {
+      if(btn) btn.addEventListener('click', () => constModal.classList.add('active'));
+    });
+    if(closeConstBtn) closeConstBtn.addEventListener('click', () => constModal.classList.remove('active'));
+
     const detailModal = document.getElementById('modal-event-detail');
+    const closeDetail = document.getElementById('close-detail');
+    if(closeDetail) closeDetail.addEventListener('click', () => detailModal.classList.remove('active'));
 
-    document.getElementById('open-constitution').onclick = () => constModal.classList.add('active');
-    document.getElementById('btn-view-const').onclick = () => constModal.classList.add('active');
-    document.getElementById('close-const-btn').onclick = () => constModal.classList.remove('active');
-    document.getElementById('close-detail').onclick = () => detailModal.classList.remove('active');
-
-    function showEventDetails(title, description) {
+    function showEventDetails(title, desc) {
       document.getElementById('detail-title').innerText = title;
-      document.getElementById('detail-description').innerText = description;
+      document.getElementById('detail-description').innerText = desc;
       detailModal.classList.add('active');
     }
 
-    /* Event Category Filtering */
+    function evalScenario(choice) {
+      const res = document.getElementById('scenario-result');
+      res.style.display = 'block';
+      if (choice === 'ask') {
+        res.innerHTML = '<strong style="color: var(--neon-green);">Correct Pivot!</strong> Asking an open-ended question or handing over a document forces them to uncross their arms and shift back into an engaged posture.';
+      } else if (choice === 'talk') {
+        res.innerHTML = '<strong style="color: #FF5555;">Suboptimal Choice.</strong> Rushing your speech increases anxiety and reinforces their defensive body posture.';
+      } else {
+        res.innerHTML = '<strong style="color: #FF5555;">Incorrect.</strong> Ignoring negative body language closes off opportunities to turn the interaction around.';
+      }
+    }
+
+    /* Event Filtering */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const eventCards = document.querySelectorAll('.event-card');
 
@@ -813,61 +822,6 @@
         });
       });
     });
-
-    /* Interactive Practice Scenario Handler */
-    function evalScenario(choice) {
-      const resultBox = document.getElementById('scenario-result');
-      resultBox.style.display = 'block';
-      if (choice === 'ask') {
-        resultBox.innerHTML = '<strong style="color: var(--neon-green);">Correct!</strong> Handing someone a physical document or asking an open question forces them to break their closed body posture and re-engage physically.';
-      } else if (choice === 'talk') {
-        resultBox.innerHTML = '<strong style="color: #FF4D4D;">Incorrect.</strong> Talking faster increases tension and pressure when the other party is already defensive.';
-      } else {
-        resultBox.innerHTML = '<strong style="color: #FF4D4D;">Incorrect.</strong> Ignoring non-verbal cues causes you to miss critical feedback during strategic communications.';
-      }
-    }
-
-    /* Close modal when clicking on overlay background */
-    window.onclick = (e) => {
-      if (e.target === constModal) constModal.classList.remove('active');
-      if (e.target === detailModal) detailModal.classList.remove('active');
-    };
   </script>
-  <script>
-  // Add your uploaded board image filenames to this list:
-  const boardFiles = [
-    "President.Mark.Stolin.png",
-    "VicePresident.Grace.Wu.png",
-    "Treasurer.Madeline.Morrissey.png",
-    "Secretary.Sarah.Connor.png",
-    "MarketingHead.Alice.Jiang.png"
-  ];
-
-  const boardContainer = document.getElementById("board-container");
-
-  if (boardContainer) {
-    boardFiles.forEach(filename => {
-      const parts = filename.split(".");
-      
-      // Parse Role from 1st part (e.g., "VicePresident" -> "Vice President")
-      const rawRole = parts[0] || "";
-      const role = rawRole.replace(/([A-Z])/g, ' $1').trim();
-
-      // Parse Name from middle parts (e.g., ["John", "Doe"] -> "John Doe")
-      const nameParts = parts.slice(1, parts.length - 1);
-      const fullName = nameParts.length > 0 ? nameParts.join(" ") : "TBD";
-
-      boardContainer.innerHTML += `
-        <div class="board-card">
-          <div class="board-img-container">
-            <img src="${filename}" alt="${role}" class="board-img" onerror="this.src='logo.png';">
-          </div>
-          <div class="board-role">${role}</div>
-          <h3 class="board-name">${fullName}</h3>
-        </div>
-      `;
-    });
-  }
-</script>
 </body>
 </html>
