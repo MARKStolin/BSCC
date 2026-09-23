@@ -52,29 +52,30 @@
       align-items: center;
       justify-content: center;
       z-index: 5;
-      background: transparent; /* Ensures no dark fill behind logo */
+      background: none !important;
     }
 
     .logo-scaler {
       width: 90vw;
       max-width: 900px;
       height: auto;
-      aspect-ratio: 1 / 1;
       display: flex;
       align-items: center;
       justify-content: center;
       transform-origin: center center;
       will-change: transform, opacity;
       transition: transform 0.05s ease-out, opacity 0.05s ease-out;
-      background: transparent;
+      background: transparent !important;
     }
 
     .logo-scaler img {
       width: 100%;
-      height: 100%;
+      max-height: 80vh;
       object-fit: contain;
-      background: transparent; /* Clean PNG cutout rendering */
-      filter: drop-shadow(0 0 35px rgba(0, 255, 102, 0.3)); /* Neon glow on edges only */
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      filter: none !important; /* Removes drop-shadow filter causing dark box artifact */
     }
 
     .scroll-hint {
@@ -488,8 +489,7 @@
   <!-- Fullscreen Logo Header Above Title Screen -->
   <div class="logo-hero-container" id="top-logo-section">
     <div class="logo-scaler" id="logoScaler">
-      <!-- Fallback SVG generates a transparent logo cutout if file is missing -->
-      <img src="./BSCC.image.png" alt="BSCC Logo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'600\' viewBox=\'0 0 600 600\'><path d=\'M300 120 L480 450 L120 450 Z\' stroke=\'%2300FF66\' stroke-width=\'6\' fill=\'none\'/><text x=\'50%\' y=\'54%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat, sans-serif\' font-weight=\'900\' font-size=\'56\'>BSCC</text></svg>';">
+      <img src="BSCC.image.png" alt="BSCC Logo">
     </div>
     <div class="scroll-hint">Scroll Down ↓</div>
   </div>
