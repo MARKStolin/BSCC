@@ -31,32 +31,7 @@
       line-height: 1.6; 
     }
 
-    /* Background hero image wrapper positioned behind soundwaves canvas and title text */
-    .hero-bg-image-wrapper {
-      position: fixed;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      width: min(85vw, 620px);
-      height: min(85vw, 620px);
-      z-index: 0; /* Behind soundwaves canvas (z: 1) and main content (z: 5) */
-      pointer-events: none;
-      opacity: 0.35;
-      filter: contrast(115%) drop-shadow(0 0 35px rgba(0, 255, 102, 0.2));
-      transition: transform 0.08s ease-out, opacity 0.08s ease-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      will-change: transform, opacity;
-    }
-
-    .hero-bg-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* Animated soundwaves canvas overlaying background image */
+    /* Animated soundwaves canvas overlay */
     #bg-canvas { 
       position: fixed; 
       top: 0; 
@@ -67,7 +42,57 @@
       pointer-events: none; 
     }
 
-    /* Navbar without top-left logo image */
+    /* Fullscreen Logo Header above the Title Screen */
+    .logo-hero-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .logo-scaler {
+      width: 90vw;
+      max-width: 900px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: center center;
+      will-change: transform, opacity;
+      transition: transform 0.05s ease-out, opacity 0.05s ease-out;
+      filter: drop-shadow(0 0 45px rgba(0, 255, 102, 0.25));
+    }
+
+    .logo-scaler img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--neon-green);
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+      z-index: 10;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-8px); }
+      60% { transform: translateY(-4px); }
+    }
+
+    /* Navbar */
     nav {
       position: fixed; 
       top: 0; 
@@ -121,19 +146,19 @@
       margin: 0 auto; 
     }
 
-    /* Hero Section Content */
-    .hero { 
-      min-height: 92vh; 
+    /* Title Screen BSCC Section */
+    .hero-title-screen { 
+      min-height: 85vh; 
       display: flex; 
       flex-direction: column; 
       justify-content: center; 
       align-items: flex-start; 
-      padding-top: 6rem; 
+      padding-top: 4rem; 
       position: relative; 
       z-index: 5; 
     }
 
-    .hero h1 { 
+    .hero-title-screen h1 { 
       font-family: var(--font-heading); 
       font-size: clamp(2.4rem, 5.8vw, 4.8rem); 
       line-height: 1.08; 
@@ -143,9 +168,9 @@
       letter-spacing: -0.5px;
       text-shadow: 0 8px 30px rgba(0, 0, 0, 0.95);
     }
-    .hero h1 span { color: var(--neon-green); display: block; }
+    .hero-title-screen h1 span { color: var(--neon-green); display: block; }
 
-    .hero p { 
+    .hero-title-screen p { 
       font-size: clamp(0.95rem, 1.3vw, 1.15rem); 
       max-width: 760px; 
       color: #E2E8F0; 
@@ -153,10 +178,10 @@
       font-family: var(--font-body); 
       line-height: 1.65; 
       text-shadow: 0 4px 15px rgba(0,0,0,0.95); 
-      background: rgba(0, 0, 0, 0.45);
-      padding: 0.85rem 1.2rem;
+      background: rgba(10, 10, 10, 0.75);
+      padding: 1rem 1.4rem;
       border-left: 3px solid var(--neon-green);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       border-radius: 0 8px 8px 0;
     }
 
@@ -435,24 +460,20 @@
     @media (max-width: 768px) { 
       .nav-links { display: none; } 
       section { padding: 4rem 5% 2rem; } 
-      .hero h1 { font-size: 2.3rem; }
+      .hero-title-screen h1 { font-size: 2.3rem; }
       .objectives-card { padding: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background logo image positioned directly behind hero title text -->
-  <div class="hero-bg-image-wrapper" id="heroBgImage">
-    <img src="./BSCC.image.jpg" alt="BSCC Background" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'500\' height=\'500\' viewBox=\'0 0 500 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23050505\'/><path d=\'M250 100 L380 380 L120 380 Z\' stroke=\'%2300FF66\' stroke-width=\'4\' fill=\'none\'/><text x=\'50%\' y=\'52%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat, sans-serif\' font-weight=\'900\' font-size=\'42\'>BSCC</text></svg>';">
-  </div>
-
-  <!-- Soundwave canvas layered over background image and under text content -->
+  <!-- Animated Soundwaves Canvas -->
   <canvas id="bg-canvas"></canvas>
 
   <nav>
     <div class="nav-brand">BSCC</div>
     <ul class="nav-links">
+      <li><a href="#bscc-title">Title</a></li>
       <li><a href="#about">Objectives</a></li>
       <li><a href="#events">Events</a></li>
       <li><a href="#board">E-Board</a></li>
@@ -461,7 +482,16 @@
     </ul>
   </nav>
 
-  <section class="hero">
+  <!-- Fullscreen Logo Header Above Title Screen -->
+  <div class="logo-hero-container" id="top-logo-section">
+    <div class="logo-scaler" id="logoScaler">
+      <img src="./BSCC.image.jpg" alt="BSCC Logo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'600\' viewBox=\'0 0 600 600\'><rect width=\'100%\' height=\'100%\' fill=\'%23050505\'/><path d=\'M300 120 L480 450 L120 450 Z\' stroke=\'%2300FF66\' stroke-width=\'6\' fill=\'none\'/><text x=\'50%\' y=\'54%\' fill=\'%2300FF66\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat, sans-serif\' font-weight=\'900\' font-size=\'56\'>BSCC</text></svg>';">
+    </div>
+    <div class="scroll-hint">Scroll Down ↓</div>
+  </div>
+
+  <!-- Title Screen BSCC Section -->
+  <section class="hero-title-screen" id="bscc-title">
     <h1>Business Strategy & <br><span>Communications Club</span></h1>
     <p>BSCC exposes students to business communication, decision-making, and psychology to hone soft skills, analyze body language, refine speech, and build strategies for leaving impactful impressions that showcase true merits.</p>
     <div class="btn-group">
@@ -651,20 +681,23 @@
   </footer>
 
   <script>
-    /* Scroll listener to shrink/enlarge background logo behind title */
-    const heroBgImage = document.getElementById('heroBgImage');
-    const maxScroll = 550; // Scroll distance for complete shrink
+    /* Scroll-driven scaling logic for the standalone top logo */
+    const logoScaler = document.getElementById('logoScaler');
+    const titleSection = document.getElementById('bscc-title');
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
-      const progress = Math.min(scrollY / maxScroll, 1);
-      
-      // Scale down from 1.0 -> 0 as user scrolls down; grows back as user scrolls up to top
-      const scale = Math.max(1 - progress, 0);
-      const opacity = Math.max(0.35 * (1 - progress), 0);
+      const titleOffset = titleSection.offsetTop;
 
-      heroBgImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
-      heroBgImage.style.opacity = opacity;
+      // Calculate progress as user scrolls down toward the title screen
+      const progress = Math.min(scrollY / titleOffset, 1);
+      
+      // Starts at scale 1 (full view), shrinks to 0.15 scale and fades as you reach title screen
+      const scale = Math.max(1 - (progress * 0.85), 0.15);
+      const opacity = Math.max(1 - (progress * 1.2), 0);
+
+      logoScaler.style.transform = `scale(${scale})`;
+      logoScaler.style.opacity = opacity;
     }, { passive: true });
 
     /* Soundwave + Nodes Canvas Rendering */
