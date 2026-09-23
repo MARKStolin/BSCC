@@ -578,8 +578,13 @@
     </div>
   </section>
 
-  <section id="board">
-    <h2 class="section-title">Executive Board</h2>
+    <!-- Executive Board Section -->
+<section id="board" class="section">
+  <h2 class="section-title">Executive Board</h2>
+  <div class="grid-board" id="board-container">
+    <!-- Automated cards generate here -->
+  </div>
+</section>
     
     <div class="grid-board">
       <div class="board-card">
@@ -828,5 +833,41 @@
       if (e.target === detailModal) detailModal.classList.remove('active');
     };
   </script>
+  <script>
+  // Add your uploaded board image filenames to this list:
+  const boardFiles = [
+    "President.Mark.Stolin.png",
+    "VicePresident.Grace.Wu.png",
+    "Treasurer.Madeline.Morrissey.png",
+    "Secretary.Sarah.Connor.png",
+    "MarketingHead.Alice.Jiang.png"
+  ];
+
+  const boardContainer = document.getElementById("board-container");
+
+  if (boardContainer) {
+    boardFiles.forEach(filename => {
+      const parts = filename.split(".");
+      
+      // Parse Role from 1st part (e.g., "VicePresident" -> "Vice President")
+      const rawRole = parts[0] || "";
+      const role = rawRole.replace(/([A-Z])/g, ' $1').trim();
+
+      // Parse Name from middle parts (e.g., ["John", "Doe"] -> "John Doe")
+      const nameParts = parts.slice(1, parts.length - 1);
+      const fullName = nameParts.length > 0 ? nameParts.join(" ") : "TBD";
+
+      boardContainer.innerHTML += `
+        <div class="board-card">
+          <div class="board-img-container">
+            <img src="${filename}" alt="${role}" class="board-img" onerror="this.src='logo.png';">
+          </div>
+          <div class="board-role">${role}</div>
+          <h3 class="board-name">${fullName}</h3>
+        </div>
+      `;
+    });
+  }
+</script>
 </body>
 </html>
